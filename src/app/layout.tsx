@@ -47,6 +47,9 @@ export default function RootLayout({
             __html: `try{if(localStorage.getItem('theme')==='dark')document.documentElement.classList.add('dark')}catch(e){}`,
           }}
         />
+        {/* Mastodon profile verification (rel=me, IndieWeb-style). Lets
+            mastodon.social tick the Portfolio field green on @arthurjdev. */}
+        <link rel="me" href="https://mastodon.social/@arthurjdev" />
       </head>
       <body
         className={`${inter.variable} ${GeistSans.variable} ${GeistMono.variable} ${cormorantGaramond.variable} ${GeistPixelGrid.variable} ${GeistPixelCircle.variable} antialiased`}
