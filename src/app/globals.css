@@ -377,6 +377,65 @@
   line-height: 1.65;
 }
 
+.legal-main {
+  width: min(680px, calc(100% - 40px));
+  margin: 0 auto;
+  padding-top: 84px;
+  outline: none;
+}
+
+.legal-article {
+  max-width: 650px;
+}
+
+.legal-article h1 {
+  margin: 0 0 34px;
+  color: var(--fg);
+  font-size: 42px;
+  line-height: 1.08;
+  font-weight: 650;
+  letter-spacing: 0;
+}
+
+.legal-article h2 {
+  margin: 40px 0 12px;
+  color: var(--fg);
+  font-size: 16px;
+  line-height: 1.35;
+  font-weight: 650;
+  letter-spacing: 0;
+}
+
+.legal-article p,
+.legal-article li {
+  color: var(--fg-muted);
+  font-size: 15px;
+  line-height: 1.72;
+}
+
+.legal-article p {
+  margin: 0 0 18px;
+}
+
+.legal-article ul {
+  margin: 0 0 24px;
+  padding-left: 18px;
+}
+
+.legal-article strong {
+  color: var(--fg);
+  font-weight: 650;
+}
+
+.legal-article a {
+  color: var(--fg);
+  text-decoration: none;
+}
+
+.legal-article a:hover {
+  color: var(--fg-muted);
+}
+
 .footer {
   padding: 72px 0 40px;
 }
@@ -419,6 +478,7 @@
   .nav,
   .hero,
   .section,
+  .legal-main,
   .footer-inner {
     width: min(100% - 32px, 680px);
   }
@@ -432,6 +492,11 @@
   }
 
   .hero-title {
+    font-size: 34px;
+    line-height: 1.1;
+  }
+
+  .legal-article h1 {
     font-size: 34px;
     line-height: 1.1;
   }
