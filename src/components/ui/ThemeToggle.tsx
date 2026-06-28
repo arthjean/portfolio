@@ -12,7 +12,7 @@ export function ThemeToggle() {
       onClick={toggleTheme}
       className="icon-btn"
       aria-label={
-        theme === "dark" ? "Passer au thème clair" : "Passer au thème sombre"
+        theme === "dark" ? "Switch to light mode" : "Switch to dark mode"
       }
     >
       {theme === "dark" ? (

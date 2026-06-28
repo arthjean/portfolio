@@ -14,7 +14,7 @@ export default function LegalLayout({
             href="/"
             className="text-sm text-gray-400 dark:text-white/30 no-underline hover:text-gray-600 dark:hover:text-white/50 transition-colors"
           >
-            &larr; Retour
+            &larr; Back
           </Link>
         </div>
       </article>

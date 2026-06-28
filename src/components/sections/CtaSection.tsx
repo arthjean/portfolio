@@ -26,18 +26,18 @@ export function CtaSection() {
 
       <div className="cta-inner">
         <div className="eyebrow" style={{ marginBottom: 28 }}>
-          <span className="available-dot" /> Disponible · Avril 2026
+          <span className="available-dot" /> Available · April 2026
         </div>
         <h2 id="cta-heading" className="font-serif cta-title">
-          On construit{" "}
+          Build{" "}
           <span style={{ fontStyle: "italic", color: "var(--fg-muted)" }}>
-            quelque chose
+            something
           </span>{" "}
           ?
         </h2>
         <p className="cta-sub">
-          30 minutes pour cadrer le besoin. Pas de pitch commercial, juste un
-          échange technique honnête.
+          30 minutes to frame the need. No sales pitch, just an honest technical
+          conversation.
         </p>
         <div style={{ display: "inline-flex", gap: 8, flexWrap: "wrap" }}>
           <a
@@ -46,12 +46,12 @@ export function CtaSection() {
             target="_blank"
             rel="noopener noreferrer"
           >
-            Réserver un appel <ArrowRight size={14} strokeWidth={1.5} />
+            Book a call <ArrowRight size={14} strokeWidth={1.5} />
           </a>
           <button type="button" className="dbtn" onClick={copy}>
             {copied ? (
               <>
-                <Check size={13} strokeWidth={2} /> Copié
+                <Check size={13} strokeWidth={2} /> Copied
               </>
             ) : (
               <>

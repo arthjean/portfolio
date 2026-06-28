@@ -24,7 +24,7 @@ export function ClientsSection() {
     <section id="clients" className="section" aria-labelledby="clients-heading">
       <div className="reveal" style={{ marginBottom: 56 }}>
         <div className="eyebrow" style={{ marginBottom: 20 }}>
-          02 / Réalisations
+          02 / Work
         </div>
         <div
           style={{
@@ -47,9 +47,9 @@ export function ClientsSection() {
               maxWidth: 720,
             }}
           >
-            Travaux pour{" "}
+            Client{" "}
             <span style={{ fontStyle: "italic", color: "var(--fg-muted)" }}>
-              clients
+              work
             </span>
             .
           </h2>

@@ -1,21 +1,16 @@
 import {
-  ClientsSection,
-  CtaSection,
-  FaqSection,
   FooterSection,
   HeroSection,
-  JourneySection,
   NavbarSection,
   ProjectsSection,
-  ValueSection,
 } from "@/components";
 import { getJsonLd } from "@/lib/json-ld";
 import { siteConfig } from "@/lib/site.config";
 
-// Configuration ISR - Revalidation toutes les 24h
+// ISR configuration - revalidate every 24 hours
 export const revalidate = 86400;
 
-// Métadonnées SEO
+// SEO metadata
 export const metadata = {
   title: siteConfig.title,
   description: siteConfig.description,
@@ -24,7 +19,7 @@ export const metadata = {
   creator: siteConfig.name,
   openGraph: {
     type: "website",
-    locale: "fr_FR",
+    locale: "en_US",
     url: siteConfig.url,
     title: siteConfig.title,
     description: siteConfig.description,
@@ -65,7 +60,7 @@ export default function Home() {
 
   return (
     <>
-      {/* Données structurées JSON-LD */}
+      {/* Structured JSON-LD data */}
       <script
         type="application/ld+json"
         // biome-ignore lint/security/noDangerouslySetInnerHtml: JSON-LD from static siteConfig, output is JSON.stringify'd + <-escaped
@@ -80,24 +75,6 @@ export default function Home() {
           __html: JSON.stringify(jsonLd.website).replace(/</g, "\\u003c"),
         }}
       />
-      <script
-        type="application/ld+json"
-        // biome-ignore lint/security/noDangerouslySetInnerHtml: JSON-LD from static siteConfig, output is JSON.stringify'd + <-escaped
-        dangerouslySetInnerHTML={{
-          __html: JSON.stringify(jsonLd.professionalService).replace(
-            /</g,
-            "\\u003c",
-          ),
-        }}
-      />
-      <script
-        type="application/ld+json"
-        // biome-ignore lint/security/noDangerouslySetInnerHtml: JSON-LD from static siteConfig, output is JSON.stringify'd + <-escaped
-        dangerouslySetInnerHTML={{
-          __html: JSON.stringify(jsonLd.faqPage).replace(/</g, "\\u003c"),
-        }}
-      />
-
       <NavbarSection />
 
       <main
@@ -107,11 +84,6 @@ export default function Home() {
       >
         <HeroSection />
         <ProjectsSection />
-        <ClientsSection />
-        <ValueSection />
-        <JourneySection />
-        <FaqSection />
-        <CtaSection />
         <FooterSection />
       </main>
     </>

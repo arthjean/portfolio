@@ -25,9 +25,9 @@ export function FaqSection() {
               fontWeight: 400,
             }}
           >
-            Réponses{" "}
+            Straight{" "}
             <span style={{ fontStyle: "italic", color: "var(--fg-muted)" }}>
-              directes
+              answers
             </span>
             .
           </h2>
@@ -38,7 +38,7 @@ export function FaqSection() {
               marginBottom: 32,
             }}
           >
-            Une question pas dans la liste ?{" "}
+            Question not listed?{" "}
             <a
               className="ink-link"
               href={siteConfig.links.cal}
@@ -46,7 +46,7 @@ export function FaqSection() {
               rel="noopener noreferrer"
               style={{ color: "var(--fg)" }}
             >
-              Réserver un créneau
+              Book a slot
             </a>
             .
           </p>

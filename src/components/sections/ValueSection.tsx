@@ -13,7 +13,7 @@ export function ValueSection() {
 
       <div className="reveal" style={{ marginBottom: 56 }}>
         <div className="eyebrow" style={{ marginBottom: 20 }}>
-          03 / Approche
+          03 / Approach
         </div>
         <div
           style={{
@@ -36,9 +36,9 @@ export function ValueSection() {
               maxWidth: 720,
             }}
           >
-            Ce que j&apos;apporte,{" "}
+            What I bring,{" "}
             <span style={{ fontStyle: "italic", color: "var(--fg-muted)" }}>
-              concrètement
+              in practice
             </span>
             .
           </h2>
@@ -52,7 +52,7 @@ export function ValueSection() {
               margin: 0,
             }}
           >
-            04 piliers
+            04 pillars
           </p>
         </div>
       </div>

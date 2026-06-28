@@ -1,4 +1,4 @@
-// Export centralisé de tous les composants
+// Central export for all components
 
 export { ClientsSection } from "./sections/ClientsSection";
 export { CtaSection } from "./sections/CtaSection";

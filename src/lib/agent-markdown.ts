@@ -1,8 +1,8 @@
 import {
   aiSkills,
   devTools,
-  faqItems,
   mainStack,
+  projects,
   siteConfig,
 } from "./site.config";
 
@@ -16,45 +16,34 @@ export function buildHomepageMarkdown(): string {
   const aiList = aiSkills
     .map((s) => `- **${s.name}** : ${s.description}`)
     .join("\n");
-  const faqList = faqItems
-    .map((f) => `### ${f.question}\n\n${f.answer}`)
-    .join("\n\n");
+  const projectList = projects
+    .map((p) => {
+      const label = p.url ? `[${p.title}](${p.url})` : p.title;
+      return `- ${label} : ${p.description}`;
+    })
+    .join("\n");
 
   return `# ${siteConfig.name}
 
 > ${siteConfig.description}
 
-AI Builder & Architecte Produit basé en France. Je construis des produits tech de bout en bout : SaaS, dev tools et systèmes d'agents IA.
+Solo Indie Maker based in France. I use my software engineering experience and creativity to build the tools developers need when the way we code changes.
 
-## Projets
+## Projects
 
-- [OpenbookLM](https://www.openbooklm.fr) : SaaS de recherche intelligente dans les documents, propulsée par du RAG avancé et des agents IA.
-- [Rust Doctor](https://rust-doctor.vercel.app) : Outil d'analyse de santé pour projets Rust : CLI, serveur MCP et skill Claude Code.
-- [Contributions Open Source](https://github.com/ArthurDEV44) : Contributeur actif sur Zed et d'autres projets open source.
+${projectList}
 
-## Services
-
-- Développement Web (Next.js, TypeScript, TailwindCSS)
-- Développement d'outils CLI et desktop (Rust, Tauri)
-- Systèmes d'agents IA (orchestration multi-agents, RAG, MCP)
-- Développement SaaS end-to-end
-- Consulting IA et intégration de workflows AI-native
-
-## Stack technique
+## Tech stack
 
 ${stackList}
 
-## Outils & plateformes
+## Tools and platforms
 
 ${toolsList}
 
-## Compétences IA
+## AI skills
 
 ${aiList}
-
-## FAQ
-
-${faqList}
 
 ## Contact
 
@@ -63,7 +52,6 @@ ${faqList}
 - LinkedIn : ${siteConfig.links.linkedin}
 - GitHub : ${siteConfig.links.github}
 - X : ${siteConfig.links.x}
-- Prendre RDV : ${siteConfig.links.cal}
 `;
 }
 

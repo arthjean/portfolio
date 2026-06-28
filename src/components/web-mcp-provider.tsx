@@ -1,7 +1,7 @@
 "use client";
 
 import { useEffect } from "react";
-import { aiSkills, mainStack, siteConfig } from "@/lib/site.config";
+import { aiSkills, mainStack, projects, siteConfig } from "@/lib/site.config";
 
 type WebMcpTool = {
   name: string;
@@ -17,26 +17,6 @@ type WebMcpNavigator = Navigator & {
     provideContext: (config: { tools: WebMcpTool[] }) => Promise<void>;
   };
 };
-
-const projects = [
-  {
-    name: "OpenbookLM",
-    url: "https://www.openbooklm.fr",
-    description:
-      "SaaS de recherche intelligente dans les documents, propulsée par du RAG avancé et des agents IA.",
-  },
-  {
-    name: "Rust Doctor",
-    url: "https://rust-doctor.vercel.app",
-    description:
-      "Outil d'analyse de santé pour projets Rust : CLI, serveur MCP et skill Claude Code.",
-  },
-  {
-    name: "GitHub Open Source",
-    url: "https://github.com/ArthurDEV44",
-    description: "Contributions open source (Zed et autres projets).",
-  },
-];
 
 function textResult(payload: unknown) {
   return {
@@ -61,7 +41,7 @@ export function WebMcpProvider() {
       {
         name: "get_profile",
         description:
-          "Retourne le profil résumé d'Arthur Jean (nom, titre, description, URL).",
+          "Returns Arthur Jean's profile summary: name, title, description, and URL.",
         inputSchema: {
           type: "object",
           properties: {},
@@ -80,41 +60,37 @@ export function WebMcpProvider() {
       {
         name: "list_projects",
         description:
-          "Liste les projets publics d'Arthur avec nom, URL et description.",
+          "Lists Arthur's public projects with their name, URL, and description.",
         inputSchema: {
           type: "object",
           properties: {},
           additionalProperties: false,
         },
-        execute: async () => textResult(projects),
+        execute: async () =>
+          textResult(
+            projects.map((project) => ({
+              name: project.title,
+              url: project.url,
+              description: project.description,
+            })),
+          ),
       },
       {
         name: "get_contact_links",
         description:
-          "Retourne les canaux de contact d'Arthur : email, LinkedIn, GitHub, X et lien de prise de rendez-vous Cal.com.",
+          "Returns Arthur's public contact channels: email, LinkedIn, GitHub, and X.",
         inputSchema: {
           type: "object",
           properties: {},
           additionalProperties: false,
         },
-        execute: async () => textResult(siteConfig.links),
-      },
-      {
-        name: "book_meeting",
-        description:
-          "Ouvre la page Cal.com d'Arthur pour réserver un créneau de 30 minutes. Retourne aussi l'URL pour les agents non-navigationnels.",
-        inputSchema: {
-          type: "object",
-          properties: {},
-          additionalProperties: false,
-        },
-        execute: async () => {
-          const url = siteConfig.links.cal;
-          if (typeof window !== "undefined") {
-            window.open(url, "_blank", "noopener,noreferrer");
-          }
-          return textResult({ opened: true, url });
-        },
+        execute: async () =>
+          textResult({
+            email: siteConfig.links.email,
+            linkedin: siteConfig.links.linkedin,
+            github: siteConfig.links.github,
+            x: siteConfig.links.x,
+          }),
       },
     ];
 

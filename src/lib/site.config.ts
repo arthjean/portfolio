@@ -1,23 +1,23 @@
-// Configuration générale du portfolio
+// Portfolio configuration
 export const siteConfig = {
   name: "Arthur Jean",
   handle: "arthurjean.com",
-  role: "AI Builder & Architecte Produit",
+  role: "Solo Indie Maker",
   pitch:
-    "Je construis des produits tech de bout en bout : SaaS, dev tools et systèmes d'agents IA. Je ne code plus, j'orchestre.",
+    "I use my software engineering experience and creativity to build the tools developers need when the way we code changes.",
   location: "Remote · France",
   available: true,
-  title: "Arthur Jean - AI Builder & Architecte Produit",
+  title: "Arthur Jean - Solo Indie Maker",
   description:
-    "Je construis des produits tech de bout en bout : SaaS, dev tools et systèmes d'agents IA. Je ne code plus, j'orchestre.",
+    "Solo Indie Maker building dev tools, coding agent workflows, open-source software, and products for the new way of coding.",
   url: "https://arthurjean.com",
   ogImage: "/og-image.png",
   keywords: [
     "AI Builder",
-    "architecte produit",
-    "développeur Next.js",
-    "développeur Rust",
-    "agents IA",
+    "product builder",
+    "Next.js developer",
+    "Rust developer",
+    "AI agents",
     "Claude Code",
     "MCP",
     "RAG",
@@ -32,15 +32,15 @@ export const siteConfig = {
     cal: "https://cal.com/arthurjean/30min",
   },
   navLinks: [
-    { href: "#projects", label: "Projets" },
+    { href: "#projects", label: "Projects" },
     { href: "#clients", label: "Clients" },
-    { href: "#value", label: "Approche" },
-    { href: "#journey", label: "Parcours" },
+    { href: "#value", label: "Approach" },
+    { href: "#journey", label: "Journey" },
     { href: "#faq", label: "FAQ" },
   ],
 };
 
-// Stack courante (pill tags)
+// Current stack (pill tags)
 export const stack = [
   "Rust",
   "Next.js",
@@ -52,7 +52,7 @@ export const stack = [
   "RAG",
 ];
 
-// Stack principale - Langages & Frameworks (legacy, conservé pour compat)
+// Main stack - languages and frameworks (legacy, kept for compatibility)
 export const mainStack = [
   { name: "Rust", category: "Language" },
   { name: "Next.js", category: "Framework" },
@@ -62,7 +62,7 @@ export const mainStack = [
   { name: "Claude Code", category: "AI Assistant" },
 ];
 
-// Outils & Services (legacy)
+// Tools and services (legacy)
 export const devTools = [
   { name: "Claude Code", category: "AI Assistant" },
   { name: "Cursor", category: "IDE" },
@@ -77,41 +77,41 @@ export const devTools = [
   { name: "Cloudflare", category: "CDN" },
 ];
 
-// Compétences IA
+// AI skills
 export const aiSkills = [
   {
-    name: "Orchestration multi-agents",
+    name: "Multi-agent orchestration",
     description:
-      "Systèmes d'agents spécialisés avec auto-réflexion, planification dynamique et exécution parallèle de tâches complexes",
+      "Specialized agent systems with self-reflection, dynamic planning, and parallel execution for complex tasks",
   },
   {
-    name: "RAG avancé",
+    name: "Advanced RAG",
     description:
-      "Retrieval-Augmented Generation avec reranking contextuel, chunking sémantique et enrichissement multi-sources",
+      "Retrieval-Augmented Generation with contextual reranking, semantic chunking, and multi-source enrichment",
   },
   {
     name: "LLM Engineering",
     description:
-      "Prompt engineering avancé, fine-tuning, évaluation de modèles et optimisation des pipelines d'inférence",
+      "Advanced prompt engineering, fine-tuning, model evaluation, and inference pipeline optimization",
   },
   {
-    name: "Intégration MCP",
+    name: "MCP integration",
     description:
-      "Model Context Protocol pour connecter les LLMs à des outils externes, APIs et sources de données en temps réel",
+      "Model Context Protocol for connecting LLMs to external tools, APIs, and real-time data sources",
   },
   {
     name: "Agentic Workflows",
     description:
-      "Conception de workflows autonomes avec tool use, function calling et boucles de rétroaction intelligentes",
+      "Autonomous workflows with tool use, function calling, and intelligent feedback loops",
   },
   {
     name: "Computer Use & Browser Automation",
     description:
-      "Agents capables d'interagir avec des interfaces graphiques, navigateurs et applications desktop de manière autonome",
+      "Agents that can interact with GUIs, browsers, and desktop apps autonomously",
   },
 ];
 
-// Projets en solo
+// Solo projects
 export interface Project {
   title: string;
   description: string;
@@ -124,43 +124,33 @@ export interface Project {
 export const projects: Project[] = [
   {
     title: "Paneflow",
-    description:
-      "Multiplexeur terminal accéléré GPU pour Linux. Alternative moderne à tmux, propulsée par GPUI (Zed) et Vulkan.",
+    description: "Cross-platform GPUI app for parallel coding agents.",
     tags: ["Dev Tool", "Rust", "GPU"],
     url: "https://paneflow.dev",
     image: "/images/paneflow.dev_.png",
     meta: "2025, Open source",
   },
   {
-    title: "OpenbookLM",
-    description:
-      "SaaS de recherche intelligente dans les documents. Alternative à NotebookLM, propulsée par RAG avancé et agents IA.",
-    tags: ["SaaS", "RAG", "Agents IA"],
-    url: null,
-    image: "/images/openbooklm.fr_fr.webp",
-    meta: "2025, Solo",
-  },
-  {
-    title: "Rust Doctor",
-    description:
-      "Outil d'analyse de santé pour projets Rust. CLI, serveur MCP et skill Claude Code.",
-    tags: ["Dev Tool", "Rust", "MCP"],
-    url: "https://rust-doctor.vercel.app",
-    image: "/images/rust-doctor.vercel.app.webp",
-    meta: "2025, Open source",
-  },
-  {
     title: "Distill",
     description:
-      "Serveur MCP open source pour optimiser les tokens LLM. 3 outils always-on, compression intelligente du contexte.",
+      "Distill is an open-source MCP server that compresses context at the source.",
     tags: ["Dev Tool", "MCP", "TypeScript"],
     url: "https://distill-mcp.com",
     image: "/images/distill-mcp.com_.png",
     meta: "2025, Open source",
   },
+  {
+    title: "Rust Doctor",
+    description:
+      "The one-command health check for your Rust project. rust-doctor scans for security, performance, correctness, architecture, and dependency issues, then folds everything into a single 0–100 score with diagnostics you can act on.",
+    tags: ["Dev Tool", "Rust", "MCP"],
+    url: "https://rust-doctor.vercel.app",
+    image: "/images/rust-doctor.vercel.app.webp",
+    meta: "2025, Open source",
+  },
 ];
 
-// Réalisations clients
+// Client work
 export interface Client {
   title: string;
   description: string;
@@ -171,36 +161,37 @@ export interface Client {
 
 export const clients: Client[] = [
   {
-    title: "Contributions Open Source",
-    description: "Contributeur actif sur Zed et d'autres projets infra dev.",
+    title: "Open Source Contributions",
+    description:
+      "Active contributor to Zed and other developer infrastructure projects.",
     image: "/images/github.com_ArthurDEV44.webp",
     url: "https://github.com/ArthurDEV44",
     year: "Ongoing",
   },
   {
     title: "Azuna",
-    description: "Site vitrine pour une conciergerie immobilière à Nice.",
+    description: "Landing page for a real estate concierge service in Nice.",
     image: "/images/azuna.pro_.webp",
     url: "https://azuna.pro",
     year: "2024",
   },
   {
     title: "Dress Night",
-    description: "E-commerce de robes de soirée avec panel admin.",
+    description: "Evening dress e-commerce site with an admin panel.",
     image: "/images/dress-night.com_.webp",
     url: "https://dress-night.com/",
     year: "2024",
   },
   {
     title: "Au Sommet de Chez Vous",
-    description: "Site vitrine pour une entreprise d'élagage dans le Morbihan.",
+    description: "Landing page for a tree-care company in Brittany.",
     image: "/images/ausommetdechezvous.bzh_.webp",
     url: "https://ausommetdechezvous.bzh",
     year: "2023",
   },
 ];
 
-// Approche / piliers
+// Approach / pillars
 export interface ValuePillar {
   num: string;
   title: string;
@@ -210,31 +201,31 @@ export interface ValuePillar {
 export const valuePillars: ValuePillar[] = [
   {
     num: "01",
-    title: "Vision produit",
+    title: "Product vision",
     description:
-      "Je pense utilisateur avant de penser code. J'ai lancé et opéré mes propres SaaS, je sais ce qui fait qu'un produit tient.",
+      "I start with the problem, the market, and the actual usage. Code comes after the product thesis, never before.",
   },
   {
     num: "02",
     title: "Workflow AI-native",
     description:
-      "Expert Claude Code et Codex. Skills, subagents, workflows multi-agents, mode swarm, CLI + MCP : je maîtrise chaque feature pour orchestrer le développement de bout en bout.",
+      "Claude Code, Codex, skills, subagents, MCP, and multi-agent workflows all serve one goal: shortening the idea-to-production loop.",
   },
   {
     num: "03",
-    title: "Ship solo, end-to-end",
+    title: "Ship solo, end to end",
     description:
-      "De l'architecture au déploiement, je gère tout. Pas besoin de coordination, pas de dépendance.",
+      "Architecture, product, interface, backend, infrastructure, deployment. One short loop, without coordination debt.",
   },
   {
     num: "04",
-    title: "Open source & communauté",
+    title: "Open source and community",
     description:
-      "Contributeur actif, pas juste consommateur. Je construis des outils que d'autres utilisent.",
+      "I contribute, publish, and document. The tools have to be good enough to stand on their own outside the portfolio.",
   },
 ];
 
-// Parcours
+// Journey
 export interface JourneyStep {
   period: string;
   title: string;
@@ -245,27 +236,27 @@ export interface JourneyStep {
 export const journey: JourneyStep[] = [
   {
     period: "2021 - 2023",
-    title: "Apprentissage développement",
+    title: "Learning software development",
     description:
-      "Formation en alternance. Les bases du métier, les premières lignes de code, la découverte du terrain.",
+      "Work-study training. The foundations of the craft, the first real lines of code, and the first contact with production work.",
   },
   {
     period: "2023 - 2025",
-    title: "Seul développeur en entreprise",
+    title: "Sole developer in a company",
     description:
-      "Architecture, produit, déploiement : tout reposait sur moi. Adoption de l'IA dès fin 2022 avec ChatGPT et GitHub Copilot, puis Cursor dès sa sortie.",
+      "Architecture, product, deployment: everything was on me. I started using AI in late 2022 with ChatGPT and GitHub Copilot, then moved to Cursor as soon as it launched.",
   },
   {
     period: "2025",
     title: "Solopreneur",
     description:
-      "Je lance mes propres produits : OpenbookLM et Rust Doctor. Contributeur open source sur Zed. Bascule complète sur Cursor puis Claude Code.",
+      "I launched my own dev tools: Rust Doctor and Distill. Open-source contributor to Zed. Full shift to Cursor, then Claude Code.",
   },
   {
     period: "2026",
     title: "Expert AI Builder",
     description:
-      "Maîtrise complète de Claude Code : skills, subagents, workflows multi-agents, mode swarm, MCP. Codex intégré au workflow pour les PRD et la review de code.",
+      "Deep Claude Code workflow: skills, subagents, multi-agent workflows, swarm mode, and MCP. Codex is part of the loop for PRDs and code review.",
     current: true,
   },
 ];
@@ -273,39 +264,38 @@ export const journey: JourneyStep[] = [
 // FAQ
 export const faqItems = [
   {
-    question: "Quelle est votre stack technique principale ?",
+    question: "What is your main tech stack?",
     answer:
-      "Je travaille principalement avec Next.js et TypeScript pour le web, Rust pour les outils CLI et le backend performant, et Python pour les pipelines IA. Côté IA, je maîtrise Claude Code, les systèmes multi-agents, le RAG avancé et le protocole MCP.",
+      "I mostly work with Next.js and TypeScript for the web, Rust for CLI tools and performance-sensitive backend work, and Python for AI pipelines. On the AI side, I use Claude Code, multi-agent systems, advanced RAG, and MCP.",
   },
   {
-    question: "Quel type de clients accompagnez-vous ?",
+    question: "What are you working on right now?",
     answer:
-      "J'accompagne principalement des startups et des entreprises tech qui veulent construire des produits ambitieux : SaaS, dev tools, marketplaces et systèmes d'agents IA. Je suis particulièrement adapté aux projets early-stage où il faut aller vite et itérer.",
+      "Paneflow is the main project: a native workspace for running multiple coding agents in parallel.",
   },
   {
-    question: "Comment se déroule une collaboration type ?",
+    question: "How do you work?",
     answer:
-      "On commence par un appel de 30 minutes pour cadrer le besoin. Je livre ensuite en sprints courts avec des démos régulières. Je travaille en autonomie complète, de l'architecture au déploiement, avec une communication asynchrone via Slack ou email.",
+      "I start from a real problem, ship a first version, and iterate from actual usage. The goal is not to make a showcase. It's to launch products that hold up.",
   },
   {
-    question:
-      "Comment intégrez-vous l'IA dans votre workflow de développement ?",
+    question: "How do you use AI in your development workflow?",
     answer:
-      "L'IA est au cœur de mon process. J'utilise Claude Code avec des skills et subagents personnalisés, des workflows multi-agents pour le développement, et Codex pour la review de code et les PRD. Je ne code plus ligne par ligne : j'orchestre.",
+      "AI is central to my process. I use Claude Code with custom skills and subagents, multi-agent workflows for development, and Codex for code review and PRDs. I don't code line by line anymore. I orchestrate.",
   },
   {
-    question: "Quels sont vos tarifs ?",
+    question: "Who do you build for?",
     answer:
-      "Je travaille au forfait par projet ou en régie journalière. Les tarifs dépendent de la complexité et de la durée. Prenez rendez-vous pour un devis personnalisé via mon calendrier.",
+      "For my own products. I'm open to serious conversations around open source, dev tools, and coding agents.",
   },
   {
-    question: "Êtes-vous disponible pour une mission ?",
+    question: "What are you open to?",
     answer:
-      "Ma disponibilité varie selon les projets en cours. Le meilleur moyen de le savoir est de réserver un créneau de 30 minutes via Cal.com pour discuter de votre projet.",
+      "Mostly user feedback, conversations with other builders, open-source contributions, and product discussions that can sharpen what I am launching.",
   },
   {
-    question: "Travaillez-vous en remote ou sur site ?",
+    question: "Where do you work from?",
     answer:
-      "Je travaille exclusivement en remote. C'est ce qui me permet d'être le plus productif et de servir des clients partout en France et à l'international.",
+      "I work remotely from France. It's the setup that lets me move with the least friction.",
   },
 ];

@@ -5,7 +5,7 @@ export function JourneySection() {
     <section id="journey" className="section" aria-labelledby="journey-heading">
       <div className="reveal" style={{ marginBottom: 56 }}>
         <div className="eyebrow" style={{ marginBottom: 20 }}>
-          04 / Parcours
+          04 / Journey
         </div>
         <div
           style={{
@@ -28,9 +28,9 @@ export function JourneySection() {
               maxWidth: 720,
             }}
           >
-            De l&apos;apprenti au{" "}
+            From apprentice to{" "}
             <span style={{ fontStyle: "italic", color: "var(--fg-muted)" }}>
-              builder solo
+              solo builder
             </span>
             .
           </h2>

@@ -103,7 +103,7 @@ export function MeshGradient({
     };
   }, [webGLSupported]);
 
-  // Fallback statique si WebGL non supporté
+  // Static fallback when WebGL is not supported
   if (!webGLSupported) {
     return (
       <div

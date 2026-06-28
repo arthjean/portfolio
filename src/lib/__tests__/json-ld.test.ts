@@ -5,11 +5,9 @@ import { siteConfig } from "@/lib/site.config";
 describe("getJsonLd", () => {
   const jsonLd = getJsonLd();
 
-  it("returns all four schemas", () => {
+  it("returns public profile schemas", () => {
     expect(jsonLd).toHaveProperty("person");
     expect(jsonLd).toHaveProperty("website");
-    expect(jsonLd).toHaveProperty("professionalService");
-    expect(jsonLd).toHaveProperty("faqPage");
   });
 
   describe("Person schema", () => {
@@ -21,6 +19,10 @@ describe("getJsonLd", () => {
     it("uses siteConfig.url for URLs", () => {
       expect(jsonLd.person.url).toBe(siteConfig.url);
       expect(jsonLd.person.image).toContain(siteConfig.url);
+    });
+
+    it("uses siteConfig.role as jobTitle", () => {
+      expect(jsonLd.person.jobTitle).toBe(siteConfig.role);
     });
 
     it("includes sameAs social links", () => {
@@ -37,38 +39,6 @@ describe("getJsonLd", () => {
 
     it("uses siteConfig.url", () => {
       expect(jsonLd.website.url).toBe(siteConfig.url);
-    });
-  });
-
-  describe("ProfessionalService schema", () => {
-    it("has correct @context and @type", () => {
-      expect(jsonLd.professionalService["@context"]).toBe("https://schema.org");
-      expect(jsonLd.professionalService["@type"]).toBe("ProfessionalService");
-    });
-
-    it("uses siteConfig.url", () => {
-      expect(jsonLd.professionalService.url).toBe(siteConfig.url);
-    });
-
-    it("includes knowsAbout from aiSkills", () => {
-      expect(jsonLd.professionalService.knowsAbout).toBeInstanceOf(Array);
-      expect(jsonLd.professionalService.knowsAbout.length).toBeGreaterThan(0);
-    });
-  });
-
-  describe("FAQPage schema", () => {
-    it("has correct @context and @type", () => {
-      expect(jsonLd.faqPage["@context"]).toBe("https://schema.org");
-      expect(jsonLd.faqPage["@type"]).toBe("FAQPage");
-    });
-
-    it("has mainEntity with Question items", () => {
-      expect(jsonLd.faqPage.mainEntity).toBeInstanceOf(Array);
-      expect(jsonLd.faqPage.mainEntity.length).toBeGreaterThan(0);
-      for (const item of jsonLd.faqPage.mainEntity) {
-        expect(item["@type"]).toBe("Question");
-        expect(item.acceptedAnswer["@type"]).toBe("Answer");
-      }
     });
   });
 });
