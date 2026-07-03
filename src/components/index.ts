@@ -1,5 +1,6 @@
 // Central export for all components
 
+export { BiographySection } from "./sections/BiographySection";
 export { ClientsSection } from "./sections/ClientsSection";
 export { CtaSection } from "./sections/CtaSection";
 export { FaqSection } from "./sections/FaqSection";

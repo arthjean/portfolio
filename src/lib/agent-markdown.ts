@@ -27,7 +27,7 @@ export function buildHomepageMarkdown(): string {
 
 > ${siteConfig.description}
 
-Solo Indie Maker based in France. I use my software engineering experience and creativity to build the tools developers need when the way we code changes.
+Creator and software engineer based in France. I build developer tools for the new way of coding, with a focus on Paneflow, Hera, Pyxis, and agent-native workflows.
 
 ## Projects
 

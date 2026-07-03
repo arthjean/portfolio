@@ -11,36 +11,25 @@ const socialLinks = [
 export function HeroSection() {
   return (
     <section id="hero" className="hero" aria-labelledby="hero-heading">
-      <div className="hero-avatar">
-        <Image
-          src="/images/avatar.webp"
-          alt={siteConfig.name}
-          fill
-          sizes="64px"
-          className="object-cover"
-          priority
-        />
-      </div>
+      <div className="hero-intro">
+        <div className="hero-text">
+          <p className="hero-kicker">{siteConfig.role}</p>
+          <h1 id="hero-heading" className="hero-title">
+            I build developer tools for the new way of coding.
+          </h1>
+        </div>
 
-      <div>
-        <p className="hero-kicker">{siteConfig.role}</p>
-        <h1 id="hero-heading" className="hero-title">
-          I use my software engineering experience and creativity to build the
-          tools developers need when the way we code changes.
-        </h1>
-        <p className="hero-copy">
-          Right now, I'm focused on building and distributing{" "}
-          <a
-            href="https://paneflow.dev"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="shimmer-link"
-          >
-            Paneflow
-          </a>
-          . I want it to become the first cross-platform alternative to Cmux,
-          with new capabilities designed for AI power users like me.
-        </p>
+        <div className="hero-avatar">
+          <Image
+            src="/images/avatar.png"
+            alt={siteConfig.name}
+            fill
+            sizes="(max-width: 560px) 84px, 112px"
+            className="object-cover"
+            priority
+            unoptimized
+          />
+        </div>
       </div>
 
       <nav className="link-row" aria-label="Primary links">

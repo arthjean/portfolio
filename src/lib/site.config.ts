@@ -3,11 +3,10 @@ export const siteConfig = {
   name: "Arthur Jean",
   handle: "arthurjean.com",
   role: "Solo Indie Maker",
-  pitch:
-    "I use my software engineering experience and creativity to build the tools developers need when the way we code changes.",
+  pitch: "I build developer tools for the new way of coding.",
   location: "Remote · France",
   available: true,
-  title: "Arthur Jean - Solo Indie Maker",
+  title: "Arthur Jean",
   description:
     "Solo Indie Maker building dev tools, coding agent workflows, open-source software, and products for the new way of coding.",
   url: "https://arthurjean.com",
@@ -129,6 +128,24 @@ export const projects: Project[] = [
     url: "https://paneflow.dev",
     image: "/images/paneflow.dev_.png",
     meta: "2025, Open source",
+  },
+  {
+    title: "Hera",
+    description:
+      "Modern Rust terminal engine for long CLI sessions, huge scrollbacks, deterministic replay, and agentic workflows.",
+    tags: ["Terminal", "Rust", "Dev Tool"],
+    url: "https://github.com/arthjean/hera-terminal",
+    image: "/images/github.com_ArthurDEV44.webp",
+    meta: "2026, Open source",
+  },
+  {
+    title: "Pyxis",
+    description:
+      "Multi-provider Rust CLI for fast agentic coding workflows, designed to connect natively with Paneflow.",
+    tags: ["CLI", "Rust", "AI Agents"],
+    url: "https://github.com/ArthurDEV44/pyxis",
+    image: "/images/github.com_ArthurDEV44.webp",
+    meta: "2026, Open source",
   },
   {
     title: "Distill",

@@ -1,4 +1,5 @@
 import {
+  BiographySection,
   FooterSection,
   HeroSection,
   NavbarSection,
@@ -83,6 +84,7 @@ export default function Home() {
         className="min-h-screen outline-none"
       >
         <HeroSection />
+        <BiographySection />
         <ProjectsSection />
         <FooterSection />
       </main>
