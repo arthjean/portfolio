@@ -3,6 +3,7 @@ import { GeistPixelCircle, GeistPixelGrid } from "geist/font/pixel";
 import { GeistSans } from "geist/font/sans";
 import type { Metadata, Viewport } from "next";
 import { Inter } from "next/font/google";
+import { siteConfig } from "@/lib/site.config";
 import "./globals.css";
 import { Providers } from "./providers";
 
@@ -13,7 +14,7 @@ const inter = Inter({
 });
 
 export const metadata: Metadata = {
-  metadataBase: new URL("https://arthurjean.com"),
+  metadataBase: new URL(siteConfig.url),
 };
 
 export const viewport: Viewport = {
@@ -29,7 +30,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" suppressHydrationWarning>
+    <html lang={siteConfig.language} suppressHydrationWarning>
       <head>
         {/* Prevent flash of wrong theme */}
         <script

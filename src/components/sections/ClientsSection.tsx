@@ -1,25 +1,9 @@
 "use client";
 
 import { ArrowUpRight } from "lucide-react";
-import Image from "next/image";
-import { useEffect, useRef, useState } from "react";
-import { type Client, clients } from "@/lib/site.config";
+import { clients } from "@/lib/site.config";
 
 export function ClientsSection() {
-  const previewRef = useRef<HTMLDivElement>(null);
-  const [hovered, setHovered] = useState<Client | null>(null);
-
-  useEffect(() => {
-    const move = (e: MouseEvent) => {
-      const node = previewRef.current;
-      if (!node) return;
-      node.style.left = `${e.clientX + 24}px`;
-      node.style.top = `${e.clientY}px`;
-    };
-    window.addEventListener("mousemove", move);
-    return () => window.removeEventListener("mousemove", move);
-  }, []);
-
   return (
     <section id="clients" className="section" aria-labelledby="clients-heading">
       <div className="reveal" style={{ marginBottom: 56 }}>
@@ -92,40 +76,17 @@ export function ClientsSection() {
                 target="_blank"
                 rel="noopener noreferrer"
                 className="proj-row"
-                onMouseEnter={() => setHovered(c)}
-                onMouseLeave={() => setHovered(null)}
               >
                 {content}
               </a>
             );
           }
           return (
-            <article
-              key={c.title}
-              className="proj-row"
-              onMouseEnter={() => setHovered(c)}
-              onMouseLeave={() => setHovered(null)}
-            >
+            <article key={c.title} className="proj-row">
               {content}
             </article>
           );
         })}
-      </div>
-
-      <div
-        ref={previewRef}
-        className={`proj-preview ${hovered ? "visible" : ""}`}
-        aria-hidden="true"
-      >
-        {hovered && (
-          <Image
-            src={hovered.image}
-            alt=""
-            fill
-            sizes="320px"
-            className="preview-img"
-          />
-        )}
       </div>
     </section>
   );

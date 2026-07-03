@@ -1,15 +1,35 @@
 import { siteConfig } from "@/lib/site.config";
 
-const AI_BOTS = ["GPTBot", "ClaudeBot", "PerplexityBot", "Bytespider"];
+const SEARCH_BOTS = [
+  "Googlebot",
+  "Bingbot",
+  "OAI-SearchBot",
+  "ChatGPT-User",
+  "Claude-SearchBot",
+  "Claude-User",
+  "PerplexityBot",
+];
+
+const TRAINING_BOTS = [
+  "GPTBot",
+  "ClaudeBot",
+  "Google-Extended",
+  "CCBot",
+  "Bytespider",
+];
 
 const CONTENT_SIGNAL = "search=yes, ai-input=yes, ai-train=no";
 
 export function GET() {
   const blocks = [
     `User-agent: *\nContent-Signal: ${CONTENT_SIGNAL}\nAllow: /`,
-    ...AI_BOTS.map(
+    ...SEARCH_BOTS.map(
       (bot) =>
         `User-agent: ${bot}\nContent-Signal: ${CONTENT_SIGNAL}\nAllow: /`,
+    ),
+    ...TRAINING_BOTS.map(
+      (bot) =>
+        `User-agent: ${bot}\nContent-Signal: ${CONTENT_SIGNAL}\nDisallow: /`,
     ),
   ];
 

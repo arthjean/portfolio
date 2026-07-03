@@ -27,7 +27,6 @@ export function HeroSection() {
             sizes="(max-width: 560px) 84px, 112px"
             className="object-cover"
             priority
-            unoptimized
           />
         </div>
       </div>

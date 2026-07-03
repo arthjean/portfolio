@@ -33,6 +33,12 @@ Creator and software engineer based in France. I build developer tools for the n
 
 ${projectList}
 
+## Canonical resources
+
+- [Homepage](${siteConfig.url}): Main profile page for Arthur Jean.
+- [Sitemap](${siteConfig.url}/sitemap.xml): Canonical URL inventory.
+- [Robots policy](${siteConfig.url}/robots.txt): Search and AI crawler preferences.
+
 ## Tech stack
 
 ${stackList}

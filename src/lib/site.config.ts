@@ -6,22 +6,27 @@ export const siteConfig = {
   pitch: "I build developer tools for the new way of coding.",
   location: "Remote · France",
   available: true,
-  title: "Arthur Jean",
+  language: "en",
+  locale: "en_US",
+  title: "Arthur Jean | Developer tools for AI coding agents",
   description:
     "Solo Indie Maker building dev tools, coding agent workflows, open-source software, and products for the new way of coding.",
   url: "https://arthurjean.com",
   ogImage: "/og-image.png",
+  lastModified: "2026-07-04",
   keywords: [
-    "AI Builder",
-    "product builder",
-    "Next.js developer",
+    "developer tools",
+    "AI coding agents",
+    "coding agent workflows",
+    "Paneflow",
+    "Hera terminal",
+    "Pyxis CLI",
     "Rust developer",
-    "AI agents",
-    "Claude Code",
+    "Next.js developer",
+    "Claude Code workflows",
     "MCP",
-    "RAG",
-    "SaaS",
-    "dev tools",
+    "agentic workflows",
+    "open source dev tools",
   ],
   links: {
     email: "arthur.jean@strivex.fr",
@@ -116,7 +121,6 @@ export interface Project {
   description: string;
   tags: string[];
   url: string | null;
-  image: string;
   meta: string;
 }
 
@@ -126,7 +130,6 @@ export const projects: Project[] = [
     description: "Cross-platform GPUI app for parallel coding agents.",
     tags: ["Dev Tool", "Rust", "GPU"],
     url: "https://paneflow.dev",
-    image: "/images/paneflow.dev_.png",
     meta: "2025, Open source",
   },
   {
@@ -135,7 +138,6 @@ export const projects: Project[] = [
       "Modern Rust terminal engine for long CLI sessions, huge scrollbacks, deterministic replay, and agentic workflows.",
     tags: ["Terminal", "Rust", "Dev Tool"],
     url: "https://github.com/arthjean/hera-terminal",
-    image: "/images/github.com_ArthurDEV44.webp",
     meta: "2026, Open source",
   },
   {
@@ -144,7 +146,6 @@ export const projects: Project[] = [
       "Multi-provider Rust CLI for fast agentic coding workflows, designed to connect natively with Paneflow.",
     tags: ["CLI", "Rust", "AI Agents"],
     url: "https://github.com/ArthurDEV44/pyxis",
-    image: "/images/github.com_ArthurDEV44.webp",
     meta: "2026, Open source",
   },
   {
@@ -153,7 +154,6 @@ export const projects: Project[] = [
       "Distill is an open-source MCP server that compresses context at the source.",
     tags: ["Dev Tool", "MCP", "TypeScript"],
     url: "https://distill-mcp.com",
-    image: "/images/distill-mcp.com_.png",
     meta: "2025, Open source",
   },
   {
@@ -162,7 +162,6 @@ export const projects: Project[] = [
       "The one-command health check for your Rust project. rust-doctor scans for security, performance, correctness, architecture, and dependency issues, then folds everything into a single 0–100 score with diagnostics you can act on.",
     tags: ["Dev Tool", "Rust", "MCP"],
     url: "https://rust-doctor.vercel.app",
-    image: "/images/rust-doctor.vercel.app.webp",
     meta: "2025, Open source",
   },
 ];
@@ -171,7 +170,6 @@ export const projects: Project[] = [
 export interface Client {
   title: string;
   description: string;
-  image: string;
   url: string | null;
   year: string;
 }
@@ -181,28 +179,24 @@ export const clients: Client[] = [
     title: "Open Source Contributions",
     description:
       "Active contributor to Zed and other developer infrastructure projects.",
-    image: "/images/github.com_ArthurDEV44.webp",
     url: "https://github.com/ArthurDEV44",
     year: "Ongoing",
   },
   {
     title: "Azuna",
     description: "Landing page for a real estate concierge service in Nice.",
-    image: "/images/azuna.pro_.webp",
     url: "https://azuna.pro",
     year: "2024",
   },
   {
     title: "Dress Night",
     description: "Evening dress e-commerce site with an admin panel.",
-    image: "/images/dress-night.com_.webp",
     url: "https://dress-night.com/",
     year: "2024",
   },
   {
     title: "Au Sommet de Chez Vous",
     description: "Landing page for a tree-care company in Brittany.",
-    image: "/images/ausommetdechezvous.bzh_.webp",
     url: "https://ausommetdechezvous.bzh",
     year: "2023",
   },

@@ -1,3 +1,4 @@
+import type { Metadata } from "next";
 import {
   BiographySection,
   FooterSection,
@@ -11,16 +12,16 @@ import { siteConfig } from "@/lib/site.config";
 // ISR configuration - revalidate every 24 hours
 export const revalidate = 86400;
 
-// SEO metadata
-export const metadata = {
+export const metadata: Metadata = {
   title: siteConfig.title,
   description: siteConfig.description,
   keywords: siteConfig.keywords,
   authors: [{ name: siteConfig.name }],
   creator: siteConfig.name,
+  category: "technology",
   openGraph: {
     type: "website",
-    locale: "en_US",
+    locale: siteConfig.locale,
     url: siteConfig.url,
     title: siteConfig.title,
     description: siteConfig.description,
@@ -42,6 +43,9 @@ export const metadata = {
   },
   alternates: {
     canonical: "/",
+    types: {
+      "text/plain": "/llms.txt",
+    },
   },
   robots: {
     index: true,
@@ -61,19 +65,11 @@ export default function Home() {
 
   return (
     <>
-      {/* Structured JSON-LD data */}
       <script
         type="application/ld+json"
-        // biome-ignore lint/security/noDangerouslySetInnerHtml: JSON-LD from static siteConfig, output is JSON.stringify'd + <-escaped
+        // biome-ignore lint/security/noDangerouslySetInnerHtml: JSON-LD from static siteConfig, output is JSON.stringify'd and <-escaped
         dangerouslySetInnerHTML={{
-          __html: JSON.stringify(jsonLd.person).replace(/</g, "\\u003c"),
-        }}
-      />
-      <script
-        type="application/ld+json"
-        // biome-ignore lint/security/noDangerouslySetInnerHtml: JSON-LD from static siteConfig, output is JSON.stringify'd + <-escaped
-        dangerouslySetInnerHTML={{
-          __html: JSON.stringify(jsonLd.website).replace(/</g, "\\u003c"),
+          __html: JSON.stringify(jsonLd.graph).replace(/</g, "\\u003c"),
         }}
       />
       <NavbarSection />
