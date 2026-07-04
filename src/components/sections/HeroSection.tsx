@@ -21,8 +21,8 @@ export function HeroSection() {
 
         <div className="hero-avatar">
           <Image
-            src="/images/avatar.png"
-            alt={siteConfig.name}
+            src={siteConfig.profileImage}
+            alt={siteConfig.profileImageAlt}
             fill
             sizes="(max-width: 560px) 84px, 112px"
             className="object-cover"

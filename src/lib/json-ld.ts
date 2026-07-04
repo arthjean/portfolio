@@ -15,6 +15,7 @@ export function getJsonLd() {
   const personId = `${siteConfig.url}/#person`;
   const websiteId = `${siteConfig.url}/#website`;
   const profilePageId = `${siteConfig.url}/#profile`;
+  const profileImageUrl = absoluteUrl(siteConfig.profileImage);
 
   const projectNodes = projects.map((project) => {
     const isSourceCode = project.url?.includes("github.com") ?? false;
@@ -40,7 +41,13 @@ export function getJsonLd() {
     "@id": personId,
     name: siteConfig.name,
     url: siteConfig.url,
-    image: absoluteUrl(siteConfig.ogImage),
+    image: {
+      "@type": "ImageObject",
+      url: profileImageUrl,
+      width: 512,
+      height: 512,
+      caption: siteConfig.profileImageAlt,
+    },
     jobTitle: siteConfig.role,
     description: siteConfig.description,
     email: siteConfig.links.email,
@@ -96,6 +103,13 @@ export function getJsonLd() {
     url: siteConfig.url,
     name: siteConfig.title,
     description: siteConfig.description,
+    primaryImageOfPage: {
+      "@type": "ImageObject",
+      url: profileImageUrl,
+      width: 512,
+      height: 512,
+      caption: siteConfig.profileImageAlt,
+    },
     inLanguage: siteConfig.language,
     dateModified: siteConfig.lastModified,
     isPartOf: {

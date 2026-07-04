@@ -31,7 +31,13 @@ describe("getJsonLd", () => {
 
     it("uses siteConfig.url for URLs", () => {
       expect(jsonLd.person.url).toBe(siteConfig.url);
-      expect(jsonLd.person.image).toContain(siteConfig.url);
+      expect(jsonLd.person.image).toMatchObject({
+        "@type": "ImageObject",
+        url: `${siteConfig.url}${siteConfig.profileImage}`,
+        width: 512,
+        height: 512,
+        caption: siteConfig.profileImageAlt,
+      });
     });
 
     it("uses siteConfig.role as jobTitle", () => {
@@ -68,6 +74,10 @@ describe("getJsonLd", () => {
     it("uses the canonical homepage and main person entity", () => {
       expect(jsonLd.profilePage["@type"]).toBe("ProfilePage");
       expect(jsonLd.profilePage.url).toBe(siteConfig.url);
+      expect(jsonLd.profilePage.primaryImageOfPage).toMatchObject({
+        "@type": "ImageObject",
+        url: `${siteConfig.url}${siteConfig.profileImage}`,
+      });
       expect(jsonLd.profilePage.mainEntity).toEqual({
         "@id": `${siteConfig.url}/#person`,
       });

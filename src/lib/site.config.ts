@@ -13,6 +13,8 @@ export const siteConfig = {
     "Solo Indie Maker building dev tools, coding agent workflows, open-source software, and products for the new way of coding.",
   url: "https://arthurjean.com",
   ogImage: "/og-image.png",
+  profileImage: "/images/avatar.png",
+  profileImageAlt: "Portrait of Arthur Jean",
   lastModified: "2026-07-04",
   keywords: [
     "developer tools",

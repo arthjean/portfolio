@@ -13,7 +13,7 @@ import { siteConfig } from "@/lib/site.config";
 export const revalidate = 86400;
 
 export const metadata: Metadata = {
-  title: siteConfig.title,
+  title: siteConfig.name,
   description: siteConfig.description,
   keywords: siteConfig.keywords,
   authors: [{ name: siteConfig.name }],
