@@ -62,13 +62,11 @@
   --color-surface: var(--surface);
   --color-glass-bg: var(--surface);
   --color-glass-border: transparent;
-  --font-sans: var(--font-inter), ui-sans-serif, system-ui, sans-serif;
+  --font-sans: var(--font-geist-sans), ui-sans-serif, system-ui, sans-serif;
   --font-display:
-    var(--font-geist-sans), "Geist", var(--font-inter), ui-sans-serif,
-    system-ui, sans-serif;
+    var(--font-geist-sans), "Geist", ui-sans-serif, system-ui, sans-serif;
   --font-elegant:
-    var(--font-geist-sans), "Geist", var(--font-inter), ui-sans-serif,
-    system-ui, sans-serif;
+    var(--font-geist-sans), "Geist", ui-sans-serif, system-ui, sans-serif;
   --font-mono: var(--font-geist-mono), "Geist Mono", ui-monospace, monospace;
   --font-pixel-grid: var(--font-geist-pixel-grid), monospace;
   --font-pixel-circle: var(--font-geist-pixel-circle), monospace;
@@ -118,7 +116,7 @@
     background: var(--bg);
     color: var(--fg);
     font-family:
-      var(--font-inter), "Inter", system-ui, -apple-system, sans-serif;
+      var(--font-geist-sans), "Geist", system-ui, -apple-system, sans-serif;
     font-feature-settings: "cv11", "ss01", "ss03";
     -webkit-font-smoothing: antialiased;
     text-rendering: optimizeLegibility;
@@ -140,9 +138,7 @@
 
 .font-serif,
 .font-sans {
-  font-family:
-    var(--font-geist-sans), "Geist", var(--font-inter), "Inter", system-ui,
-    sans-serif;
+  font-family: var(--font-geist-sans), "Geist", system-ui, sans-serif;
   letter-spacing: 0;
 }
 

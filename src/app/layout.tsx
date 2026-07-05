@@ -2,16 +2,9 @@ import { GeistMono } from "geist/font/mono";
 import { GeistPixelCircle, GeistPixelGrid } from "geist/font/pixel";
 import { GeistSans } from "geist/font/sans";
 import type { Metadata, Viewport } from "next";
-import { Inter } from "next/font/google";
 import { siteConfig } from "@/lib/site.config";
 import "./globals.css";
 import { Providers } from "./providers";
-
-const inter = Inter({
-  subsets: ["latin"],
-  variable: "--font-inter",
-  display: "swap",
-});
 
 export const metadata: Metadata = {
   metadataBase: new URL(siteConfig.url),
@@ -44,7 +37,7 @@ export default function RootLayout({
         <link rel="me" href="https://mastodon.social/@arthurjdev" />
       </head>
       <body
-        className={`${inter.variable} ${GeistSans.variable} ${GeistMono.variable} ${GeistPixelGrid.variable} ${GeistPixelCircle.variable} antialiased`}
+        className={`${GeistSans.variable} ${GeistMono.variable} ${GeistPixelGrid.variable} ${GeistPixelCircle.variable} antialiased`}
       >
         <a
           href="#main-content"
