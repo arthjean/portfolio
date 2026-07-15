@@ -21,7 +21,6 @@ export const siteConfig = {
     "AI coding agents",
     "coding agent workflows",
     "Paneflow",
-    "Hera terminal",
     "Pyxis CLI",
     "Rust developer",
     "Next.js developer",
@@ -133,14 +132,6 @@ export const projects: Project[] = [
     tags: ["Dev Tool", "Rust", "GPU"],
     url: "https://paneflow.dev",
     meta: "2025, Open source",
-  },
-  {
-    title: "Hera",
-    description:
-      "Modern Rust terminal engine for long CLI sessions, huge scrollbacks, deterministic replay, and agentic workflows.",
-    tags: ["Terminal", "Rust", "Dev Tool"],
-    url: "https://github.com/arthjean/hera-terminal",
-    meta: "2026, Open source",
   },
   {
     title: "Pyxis",

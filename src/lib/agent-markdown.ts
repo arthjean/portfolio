@@ -27,7 +27,7 @@ export function buildHomepageMarkdown(): string {
 
 > ${siteConfig.description}
 
-Creator and software engineer based in France. I build developer tools for the new way of coding, with a focus on Paneflow, Hera, Pyxis, and agent-native workflows.
+Creator and software engineer based in France. I build developer tools for the new way of coding, with a focus on Paneflow, Pyxis, and agent-native workflows.
 
 ## Projects
 

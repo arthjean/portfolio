@@ -59,18 +59,7 @@ export function BiographySection() {
             Paneflow
           </a>
           : an open-source workspace for running multiple coding agents in
-          parallel. Under that surface, I&apos;m building{" "}
-          <a
-            href="https://github.com/arthjean/hera-terminal"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="copy-link"
-          >
-            Hera
-          </a>
-          , a modern terminal engine in Rust designed for long CLI sessions,
-          huge scrollbacks, deterministic replay, and structured analysis of
-          agentic sessions. In parallel, I&apos;m developing{" "}
+          parallel. In parallel, I&apos;m developing{" "}
           <a
             href="https://github.com/ArthurDEV44/pyxis"
             target="_blank"
