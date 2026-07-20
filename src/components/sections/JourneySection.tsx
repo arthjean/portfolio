@@ -83,7 +83,7 @@ export function JourneySection() {
                     padding: "2px 6px",
                     borderRadius: 4,
                     background:
-                      "color-mix(in srgb, var(--available) 18%, transparent)",
+                      "color-mix(in oklch, var(--available) 18%, transparent)",
                     color: "var(--available)",
                     fontSize: 10,
                   }}

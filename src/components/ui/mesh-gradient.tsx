@@ -5,10 +5,10 @@ import { Gradient } from "@/lib/gradient";
 import { cn } from "@/lib/utils";
 
 const DEFAULT_COLORS = [
-  "#020617", // Slate 950
-  "#064e3b", // Emerald 900
-  "#0d9488", // Teal 600
-  "#22d3ee", // Cyan 400
+  "#f1ebe8", // Porcelain canvas
+  "#ebe3e7", // Porcelain elevated
+  "#ded4e2", // Porcelain panel
+  "#334499", // Porcelain indigo
 ];
 
 interface MeshGradientProps {

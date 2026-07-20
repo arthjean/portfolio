@@ -12,10 +12,10 @@ interface GlassCardProps extends React.HTMLAttributes<HTMLElement> {
 }
 
 const variantStyles = {
-  default: "bg-white/[0.02] backdrop-blur-lg border-white/[0.08]",
-  card: "bg-white/[0.03] backdrop-blur-2xl border-white/10 shadow-[inset_0_1px_0_0_rgba(255,255,255,0.1)]",
+  default: "bg-card/72 backdrop-blur-lg border-border/70",
+  card: "bg-card/84 backdrop-blur-2xl border-border shadow-[inset_0_1px_0_0_var(--glass-highlight)]",
   interactive:
-    "bg-white/[0.03] backdrop-blur-2xl border-white/10 hover:bg-white/[0.05] hover:border-white/20 transition-all duration-300",
+    "bg-card/84 backdrop-blur-2xl border-border hover:bg-secondary hover:border-ring/40 transition-[background-color,border-color] duration-300",
 };
 
 const roundedStyles = {
@@ -55,12 +55,12 @@ export function GlassCard({
     >
       {/* Glow line */}
       {glowLine && (
-        <div className="absolute top-0 left-1/2 -translate-x-1/2 w-3/4 h-px bg-gradient-to-r from-transparent via-white/40 to-transparent" />
+        <div className="absolute top-0 left-1/2 -translate-x-1/2 w-3/4 h-px bg-gradient-to-r from-transparent via-foreground/30 to-transparent" />
       )}
 
       {/* Rim light (top highlight) */}
       {variant === "card" && (
-        <div className="absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-white/20 to-transparent rounded-t-2xl" />
+        <div className="absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-foreground/16 to-transparent rounded-t-2xl" />
       )}
 
       {children}

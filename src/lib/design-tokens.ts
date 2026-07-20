@@ -1,20 +1,30 @@
 /**
- * Design Tokens - StriveX Theme
+ * Design Tokens - Arthur Jean Portfolio
  * Centralized design system tokens for consistent styling
  */
 
 // Colors
 export const colors = {
-  background: "#030610",
-  foreground: "#F8FAFC",
-  primary: "#F8FAFC",
-  accent: "#38BDF8",
-  surface: "#0F1525",
-  muted: "#94A3B8",
-  secondary: "#1E293B",
-  destructive: "#EF4444",
-  // Gradients
-  heroGradient: ["#020617", "#064e3b", "#0d9488", "#22d3ee"],
+  background: "oklch(0.9439 0.0077 48.7)",
+  foreground: "oklch(0.2234 0.0779 267.9)",
+  primary: "oklch(0.2234 0.0779 267.9)",
+  accent: "oklch(0.4232 0.1398 270.7)",
+  surface: "oklch(0.8821 0.0218 316.5)",
+  muted: "oklch(0.4073 0.0536 271.4)",
+  secondary: "oklch(0.9233 0.0102 345.4)",
+  destructive: "oklch(0.505 0.195 25)",
+  dark: {
+    background: "oklch(0.2234 0.0779 267.9)",
+    foreground: "oklch(0.9439 0.0077 48.7)",
+    primary: "oklch(0.9439 0.0077 48.7)",
+    accent: "oklch(0.76 0.1 270.7)",
+    surface: "oklch(0.2852 0.072 272)",
+    muted: "oklch(0.8249 0.0343 300.8)",
+    secondary: "oklch(0.244 0.075 269)",
+    destructive: "oklch(0.704 0.18 22)",
+  },
+  // WebGL expects hexadecimal colors, so these mirror the OKLCH light palette.
+  heroGradient: ["#f1ebe8", "#ebe3e7", "#ded4e2", "#334499"],
 } as const;
 
 // Spacing
@@ -82,17 +92,18 @@ export const zIndex = {
 // Shadows & Glow
 export const shadows = {
   glow: {
-    cyan: "0 0 15px rgba(34, 211, 238, 0.3)",
-    white: "0 0 40px -10px rgba(255, 255, 255, 0.3)",
+    accent: "0 0 15px oklch(0.4232 0.1398 270.7 / 0.28)",
+    neutral: "0 0 40px -10px oklch(0.9439 0.0077 48.7 / 0.24)",
   },
-  glass: "inset 0 1px 0 0 rgba(255, 255, 255, 0.1)",
+  glass: "inset 0 1px 0 0 oklch(0.9439 0.0077 48.7 / 0.1)",
 } as const;
 
 // Utility Classes
 export const classes = {
-  glassCard: "bg-white/[0.03] backdrop-blur-2xl border border-white/10",
-  glowLine: "bg-gradient-to-r from-transparent via-white/40 to-transparent",
+  glassCard: "bg-card/84 backdrop-blur-2xl border border-border",
+  glowLine:
+    "bg-gradient-to-r from-transparent via-foreground/30 to-transparent",
   textGradient: "bg-clip-text text-transparent",
   focusRing:
-    "focus-visible:ring-2 focus-visible:ring-cyan-500/50 focus-visible:ring-offset-2 focus-visible:ring-offset-black",
+    "focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 focus-visible:ring-offset-background",
 } as const;
