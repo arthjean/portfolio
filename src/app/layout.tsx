@@ -15,6 +15,25 @@ const hankenGrotesk = Hanken_Grotesk({
 
 export const metadata: Metadata = {
   metadataBase: new URL(siteConfig.url),
+  title: {
+    default: siteConfig.title,
+    template: `%s | ${siteConfig.name}`,
+  },
+  description: siteConfig.description,
+  applicationName: siteConfig.name,
+  authors: [{ name: siteConfig.name, url: siteConfig.url }],
+  creator: siteConfig.name,
+  publisher: siteConfig.name,
+  formatDetection: {
+    email: false,
+    address: false,
+    telephone: false,
+  },
+  icons: {
+    icon: "/icon.png",
+    apple: "/apple-icon.png",
+  },
+  manifest: "/manifest.webmanifest",
 };
 
 export const viewport: Viewport = {
@@ -41,7 +60,7 @@ export default function RootLayout({
         />
         {/* Mastodon profile verification (rel=me, IndieWeb-style). Lets
             mastodon.social tick the Portfolio field green on @arthurjdev. */}
-        <link rel="me" href="https://mastodon.social/@arthurjdev" />
+        <link rel="me" href={siteConfig.links.mastodon} />
       </head>
       <body
         className={`${GeistSans.variable} ${GeistMono.variable} ${GeistPixelGrid.variable} ${GeistPixelCircle.variable} ${hankenGrotesk.variable} antialiased`}
