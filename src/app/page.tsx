@@ -29,7 +29,7 @@ export const metadata: Metadata = {
         url: `${siteConfig.url}${siteConfig.ogImage}`,
         width: 1200,
         height: 630,
-        alt: siteConfig.name,
+        alt: siteConfig.ogImageAlt,
       },
     ],
   },
@@ -37,7 +37,13 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     title: siteConfig.title,
     description: siteConfig.description,
-    images: [`${siteConfig.url}${siteConfig.ogImage}`],
+    images: [
+      {
+        url: `${siteConfig.url}${siteConfig.ogImage}`,
+        alt: siteConfig.ogImageAlt,
+      },
+    ],
+    creator: "@arthurjdev",
   },
   alternates: {
     canonical: "/",
