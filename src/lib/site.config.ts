@@ -13,9 +13,11 @@ export const siteConfig = {
     "Solo Indie Maker building dev tools, coding agent workflows, open-source software, and products for the new way of coding.",
   url: "https://arthurjean.com",
   ogImage: "/og-image.png",
+  ogImageAlt:
+    "Arthur Jean, developer tools for AI coding agents and agentic workflows",
   profileImage: "/images/avatar.png",
   profileImageAlt: "Portrait of Arthur Jean",
-  lastModified: "2026-07-04",
+  lastModified: "2026-07-21",
   keywords: [
     "developer tools",
     "AI coding agents",
@@ -34,6 +36,7 @@ export const siteConfig = {
     linkedin: "https://www.linkedin.com/in/arthur-jean-401b56239/",
     github: "https://github.com/ArthurDEV44",
     x: "https://x.com/arthurjdev",
+    mastodon: "https://mastodon.social/@arthurjdev",
     cal: "https://cal.com/arthurjean/30min",
   },
   navLinks: [
