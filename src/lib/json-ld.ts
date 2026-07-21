@@ -27,6 +27,7 @@ export function getJsonLd() {
       name: project.title,
       description: project.description,
       ...(project.url ? { url: project.url } : {}),
+      ...(isSourceCode && project.url ? { codeRepository: project.url } : {}),
       keywords: project.tags,
       creator: {
         "@id": personId,
@@ -62,6 +63,7 @@ export function getJsonLd() {
       siteConfig.links.linkedin,
       siteConfig.links.github,
       siteConfig.links.x,
+      siteConfig.links.mastodon,
     ],
     knowsAbout: [
       "Next.js",
@@ -74,9 +76,6 @@ export function getJsonLd() {
       "Dev tools",
       "Open source",
     ],
-    subjectOf: projectNodes.map((project) => ({
-      "@id": project["@id"],
-    })),
   };
 
   const website = {
