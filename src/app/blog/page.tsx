@@ -1,11 +1,13 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 
-import { GridShell } from "@/components";
-import { formatPostDate, getPublishedPosts, type Post } from "@/lib/blog";
+import { SiteShell } from "@/components";
+import { PostList } from "@/components/blog/PostList";
+import { BackLink } from "@/components/ui/BackLink";
+import { getPublishedPosts } from "@/lib/blog";
 import { siteConfig } from "@/lib/site.config";
 
-const title = "Blog";
+const title = "Writing";
 const description = `Technical notes by ${siteConfig.name} on developer tools, coding agents, and the systems behind them.`;
 
 export const metadata: Metadata = {
@@ -23,67 +25,25 @@ export default async function BlogIndexPage() {
   const posts = await getPublishedPosts();
 
   return (
-    <GridShell>
-      <main id="main-content" tabIndex={-1} className="outline-none">
-        <BlogIndex posts={posts} />
-      </main>
-    </GridShell>
-  );
-}
+    <SiteShell header={<BackLink href="/" label="Home" />}>
+      <section aria-labelledby="blog-heading">
+        <h1 id="blog-heading" className="text-fg mb-1 font-[550]">
+          {title}
+        </h1>
+        <p className="text-fg-muted mb-8 text-pretty">{description}</p>
 
-function BlogIndex({ posts }: { posts: Post[] }) {
-  return (
-    <section aria-labelledby="blog-heading" className="pt-4">
-      <h1
-        id="blog-heading"
-        className="border-grid-soft text-foreground border-y border-dashed p-4 font-serif text-3xl leading-normal"
-      >
-        {title}
-      </h1>
-
-      <p className="border-grid-soft text-muted-foreground border-b border-dashed p-4 text-sm leading-relaxed font-light">
-        {description}
-      </p>
-
-      {posts.length === 0 ? (
-        <p className="border-grid-soft text-muted-foreground mt-6 border-y border-dashed p-4 text-sm font-light">
-          No posts published yet.
-        </p>
-      ) : (
-        <ul>
-          {posts.map((post, index) => (
-            <li
-              key={post.slug}
-              className={`border-grid-soft group relative border-y border-dashed p-4 ${
-                index === 0 ? "mt-6" : "mt-1"
-              }`}
-            >
-              {/* Only the title is the link, so its accessible name is the post
-                  title alone; the overlay keeps the whole row clickable. */}
-              <h2 className="text-foreground font-sans text-base font-normal tracking-tight">
-                <Link
-                  href={`/blog/${post.slug}`}
-                  className="underline-offset-4 group-hover:underline group-hover:decoration-[color:var(--line)] after:absolute after:inset-0"
-                >
-                  {post.meta.title}
-                </Link>
-              </h2>
-
-              <p className="text-muted-foreground mt-2 line-clamp-2 font-sans text-sm leading-relaxed font-light tracking-tight">
-                {post.meta.description}
-              </p>
-
-              <p className="text-muted-foreground mt-3 flex flex-wrap items-center gap-2 text-xs font-light">
-                <time dateTime={post.meta.publishedAt}>
-                  {formatPostDate(post.meta.publishedAt)}
-                </time>
-                <span aria-hidden="true">·</span>
-                <span>{post.readingTimeMinutes} min read</span>
-              </p>
-            </li>
-          ))}
-        </ul>
-      )}
-    </section>
+        {posts.length === 0 ? (
+          <p className="text-fg-muted">
+            Nothing published yet. New posts land in the{" "}
+            <Link href="/rss.xml" prefetch={false} className="prose-link">
+              RSS feed
+            </Link>{" "}
+            first.
+          </p>
+        ) : (
+          <PostList posts={posts} />
+        )}
+      </section>
+    </SiteShell>
   );
 }

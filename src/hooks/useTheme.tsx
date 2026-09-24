@@ -46,7 +46,18 @@ export function ThemeProvider({ children }: { children: ReactNode }) {
   const theme = useSyncExternalStore(subscribe, getSnapshot, getServerSnapshot);
 
   useEffect(() => {
-    document.documentElement.classList.toggle("dark", theme === "dark");
+    const root = document.documentElement;
+    if (root.classList.contains("dark") === (theme === "dark")) return;
+
+    /* Every color transition on the page would fire at once and smear the
+       switch; pause them for the swap, force a style flush, then let them back
+       in on the next frame. */
+    const pause = document.createElement("style");
+    pause.textContent = "*,*::before,*::after{transition:none!important}";
+    document.head.append(pause);
+    root.classList.toggle("dark", theme === "dark");
+    void getComputedStyle(root).color;
+    requestAnimationFrame(() => pause.remove());
   }, [theme]);
 
   const toggleTheme = useCallback(() => {

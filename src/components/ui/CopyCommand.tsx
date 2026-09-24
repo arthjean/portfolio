@@ -39,11 +39,11 @@ export function CopyCommand({ command }: { command: string }) {
       <span className="article-command-text" data-text={`$ ${command}`}>
         $ {command}
       </span>
-      <span className="article-command-icon" data-state={isCopied ? "b" : "a"}>
-        <span className="article-command-glyph">
+      <span className="icon-swap" data-state={isCopied ? "b" : "a"}>
+        <span className="icon-swap-glyph">
           <CopyIcon aria-hidden="true" size={18} />
         </span>
-        <span className="article-command-glyph">
+        <span className="icon-swap-glyph">
           <CheckIcon aria-hidden="true" size={18} />
         </span>
       </span>

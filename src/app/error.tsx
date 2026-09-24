@@ -1,5 +1,6 @@
 "use client";
 
+import Link from "next/link";
 import { useEffect } from "react";
 
 import { Button } from "@/components/ui/button";
@@ -14,20 +15,28 @@ export default function ErrorPage({
   useEffect(() => {
     console.error(error);
   }, [error]);
+
   return (
-    <div className="bg-background flex min-h-screen flex-col items-center justify-center px-4 text-center">
-      <h1 className="font-display text-foreground text-4xl font-bold">
-        Something went wrong
-      </h1>
-      <p className="text-muted-foreground mt-4 max-w-md">
-        Something broke. You can try again or go back to the homepage.
+    <main
+      id="main-content"
+      className="mx-auto w-full max-w-[calc(var(--measure)+3rem)] px-6 py-24 sm:py-32"
+    >
+      <h1 className="text-fg font-[550]">This page failed to load</h1>
+      <p className="text-fg-muted mt-1 text-pretty">
+        Try loading it again. If it keeps failing, the homepage still works.
       </p>
-      <div className="mt-8 flex gap-4">
-        <Button variant="outline" onClick={reset}>
+      <div className="mt-8 flex flex-wrap gap-3">
+        <Button onClick={reset} className="rounded-full px-4">
           Try again
         </Button>
-        <Button onClick={() => (window.location.href = "/")}>Home</Button>
+        <Button
+          variant="outline"
+          render={<Link href="/" />}
+          className="rounded-full px-4"
+        >
+          Go to homepage
+        </Button>
       </div>
-    </div>
+    </main>
   );
 }

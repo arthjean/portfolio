@@ -1,4 +1,5 @@
-import { GridShell } from "@/components";
+import { SiteShell } from "@/components";
+import { BackLink } from "@/components/ui/BackLink";
 
 export default function LegalLayout({
   children,
@@ -6,14 +7,8 @@ export default function LegalLayout({
   children: React.ReactNode;
 }) {
   return (
-    <GridShell>
-      <main
-        id="main-content"
-        tabIndex={-1}
-        className="border-grid-soft border-y border-dashed p-4 outline-none"
-      >
-        <article className="legal-article">{children}</article>
-      </main>
-    </GridShell>
+    <SiteShell header={<BackLink href="/" label="Home" />}>
+      <article className="legal-article">{children}</article>
+    </SiteShell>
   );
 }

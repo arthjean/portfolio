@@ -3,12 +3,12 @@ import type { Metadata } from "next";
 import {
   BiographySection,
   ExperienceSection,
-  FooterSection,
-  GridShell,
   HeroSection,
   ProjectsSection,
-  SignoffSection,
+  SiteShell,
+  WritingSection,
 } from "@/components";
+import { getPublishedPosts } from "@/lib/blog";
 import { getJsonLd } from "@/lib/json-ld";
 import { siteConfig } from "@/lib/site.config";
 
@@ -68,8 +68,9 @@ export const metadata: Metadata = {
   },
 };
 
-export default function Home() {
+export default async function Home() {
   const jsonLd = getJsonLd();
+  const posts = await getPublishedPosts();
 
   return (
     <>
@@ -80,16 +81,13 @@ export default function Home() {
           __html: JSON.stringify(jsonLd.graph).replace(/</g, "\\u003c"),
         }}
       />
-      <GridShell>
-        <main id="main-content" tabIndex={-1} className="outline-none">
-          <HeroSection />
-          <BiographySection />
-          <ExperienceSection />
-          <ProjectsSection />
-          <SignoffSection />
-          <FooterSection />
-        </main>
-      </GridShell>
+      <SiteShell>
+        <HeroSection />
+        <ProjectsSection />
+        <WritingSection posts={posts} />
+        <ExperienceSection />
+        <BiographySection />
+      </SiteShell>
     </>
   );
 }

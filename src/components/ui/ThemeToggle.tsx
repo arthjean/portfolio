@@ -11,15 +11,15 @@ export function ThemeToggle() {
     <button
       type="button"
       onClick={toggleTheme}
-      className="icon-btn"
+      className="icon-button"
       aria-label={
-        theme === "dark" ? "Switch to light mode" : "Switch to dark mode"
+        theme === "dark" ? "Switch to light theme" : "Switch to dark theme"
       }
     >
       {theme === "dark" ? (
-        <Sun className="h-3.5 w-3.5" strokeWidth={1.5} />
+        <Sun aria-hidden="true" size={16} strokeWidth={1.75} />
       ) : (
-        <Moon className="h-3.5 w-3.5" strokeWidth={1.5} />
+        <Moon aria-hidden="true" size={15} strokeWidth={1.75} />
       )}
     </button>
   );

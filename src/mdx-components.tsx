@@ -112,9 +112,12 @@ function buildComponents(toc?: TocEntry[]): MDXComponents {
   const headingId = headingIdReader(toc);
 
   return {
+    /* The text sits in its own box so the rule drawn after it (see
+       `.article-body h2`) is one flex item, whatever inline markup the heading
+       carries. */
     h2: ({ children, ...rest }: ComponentPropsWithoutRef<"h2">) => (
       <h2 id={headingId(2, nodeText(children))} {...rest}>
-        {children}
+        <span>{children}</span>
       </h2>
     ),
     h3: ({ children, ...rest }: ComponentPropsWithoutRef<"h3">) => (

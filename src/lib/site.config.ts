@@ -126,7 +126,12 @@ export interface Project {
   tags: string[];
   url: string | null;
   meta: string;
-  rainbow?: boolean;
+  /** Mark shown on the project card; a variant for dark mode when the light
+      one would disappear against a dark surface. Without one, the card sets
+      the name as a typographic mark. */
+  logo?: { src: string; darkSrc?: string };
+  /** Spans the full row of the grid: the one project the page leads with. */
+  featured?: boolean;
 }
 
 export const projects: Project[] = [
@@ -136,7 +141,8 @@ export const projects: Project[] = [
     tags: ["Dev Tool", "Rust", "GPU"],
     url: "https://paneflow.dev",
     meta: "2025, Open source",
-    rainbow: true,
+    logo: { src: "/images/projects/paneflow.png" },
+    featured: true,
   },
   {
     title: "Rust Doctor",
@@ -144,6 +150,7 @@ export const projects: Project[] = [
     tags: ["Dev Tool", "Rust", "MCP"],
     url: "https://rust-doctor.vercel.app",
     meta: "2025, Open source",
+    logo: { src: "/images/projects/rust-doctor.png" },
   },
   {
     title: "Mistral Vibe RS",
@@ -151,6 +158,7 @@ export const projects: Project[] = [
     tags: ["CLI", "Rust", "AI Agents"],
     url: "https://github.com/arthjean/mistral-vibe-rs",
     meta: "2026, Open source",
+    logo: { src: "/images/projects/mistral-vibe-rs.png" },
   },
   {
     title: "Kori",
@@ -159,6 +167,7 @@ export const projects: Project[] = [
     tags: ["Desktop App", "Rust", "Linux"],
     url: "https://github.com/arthjean/kori",
     meta: "2026, Open source",
+    logo: { src: "/images/projects/kori.png" },
   },
   {
     title: "Pyxis",
@@ -174,6 +183,10 @@ export const projects: Project[] = [
     tags: ["Dev Tool", "MCP", "TypeScript"],
     url: "https://distill-mcp.com",
     meta: "2025, Open source",
+    logo: {
+      src: "/images/projects/distill.png",
+      darkSrc: "/images/projects/distill-dark.png",
+    },
   },
   {
     title: "OpenbookLM",
@@ -182,6 +195,10 @@ export const projects: Project[] = [
     tags: ["RAG", "Rust", "Next.js"],
     url: "https://github.com/arthjean/openbooklm-core",
     meta: "2026, Open core",
+    logo: {
+      src: "/images/projects/openbooklm.png",
+      darkSrc: "/images/projects/openbooklm-dark.png",
+    },
   },
 ];
 

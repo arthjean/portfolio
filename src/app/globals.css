@@ -6,41 +6,69 @@
 :root {
   color-scheme: light;
 
-  /* Neutral light ramp: pure achromatic (C = 0), white canvas, gray-to-black ink. */
-  --neutral-canvas: oklch(1 0 0);
-  --neutral-elevated: oklch(0.985 0 0);
-  --neutral-panel: oklch(0.97 0 0);
-  --neutral-raised: oklch(0.922 0 0);
-  --neutral-hairline: oklch(0.87 0 0);
-  --neutral-hairline-hover: oklch(0.708 0 0);
-  --neutral-subtle: oklch(0.556 0 0);
-  --neutral-muted: oklch(0.439 0 0);
-  --neutral-ink: oklch(0.205 0 0);
+  /* Light ramp: achromatic, one step per role. The light end is dense on
+     purpose: the page, a card, a hovered row and a control all sit within a few
+     points of lightness and still have to read as four different surfaces. */
+  --gray-1: oklch(1 0 0);
+  --gray-2: oklch(0.9911 0 0);
+  --gray-3: oklch(0.9642 0 0);
+  --gray-4: oklch(0.9551 0 0);
+  --gray-5: oklch(0.931 0 0);
+  --gray-6: oklch(0.9067 0 0);
+  --gray-7: oklch(0.8853 0 0);
+  --gray-8: oklch(0.61 0 0);
+  --gray-9: oklch(0.5417 0 0);
+  --gray-10: oklch(0.3791 0 0);
+  --gray-11: oklch(0.2435 0 0);
 
-  /* Navy anchors reused by the dark ramp below. */
-  --navy-ink: oklch(0.19 0.06 268);
-  --navy-canvas: oklch(0.9439 0.0077 48.7);
-  --navy-raised: oklch(0.8249 0.0343 300.8);
-  --navy-hairline: oklch(0.7377 0.0402 291.9);
-  --navy-media: oklch(0.8326 0.0403 285.5);
+  /* Dark ramp: its own material, not the light one reversed. Surfaces climb in
+     smaller steps because dark tones separate faster, and the ink stops short
+     of white so a long article does not glare. */
+  --gray-dark-1: oklch(0.17 0 0);
+  --gray-dark-2: oklch(0.195 0 0);
+  --gray-dark-3: oklch(0.215 0 0);
+  --gray-dark-4: oklch(0.245 0 0);
+  --gray-dark-5: oklch(0.27 0 0);
+  --gray-dark-6: oklch(0.285 0 0);
+  --gray-dark-7: oklch(0.34 0 0);
+  --gray-dark-8: oklch(0.38 0 0);
+  --gray-dark-9: oklch(0.56 0 0);
+  --gray-dark-10: oklch(0.7 0 0);
+  --gray-dark-11: oklch(0.83 0 0);
+  --gray-dark-12: oklch(0.95 0 0);
 
-  /* Light theme semantic mapping. */
-  --bg: var(--neutral-canvas);
-  --fg: var(--neutral-ink);
-  --fg-muted: var(--neutral-muted);
-  --fg-faint: var(--neutral-subtle);
-  --brand: oklch(0.4232 0.1398 270.7);
-  --brand-hover: oklch(0.3692 0.1224 270.9);
-  --brand-contrast: var(--neutral-canvas);
-  --surface-elevated: var(--neutral-elevated);
-  --surface: var(--neutral-panel);
-  --surface-raised: var(--neutral-raised);
-  --line: var(--neutral-hairline);
-  --line-hover: var(--neutral-hairline-hover);
+  /* Semantic roles. Components only ever read these. Measured against the
+     page: ink 15.9:1, body 9.8:1, muted 4.9:1, faint 3.7:1 (icons only). */
+  --bg: var(--gray-2);
+  --surface: var(--gray-1);
+  --surface-hover: var(--gray-3);
+  --control: var(--gray-4);
+  --control-hover: var(--gray-5);
+  --line: var(--gray-5);
+  --line-strong: var(--gray-7);
+  --selection: var(--gray-6);
+  --fg-faint: var(--gray-8);
+  --fg-muted: var(--gray-9);
+  --fg-body: var(--gray-10);
+  --fg: var(--gray-11);
+  --focus: var(--fg-muted);
   --available: oklch(0.49 0.12 150);
-  --info: oklch(0.5 0.12 250);
-  --glass-highlight: oklch(1 0 0 / 0.65);
-  --radius: 0;
+  --destructive: oklch(0.505 0.195 25);
+  --destructive-foreground: var(--gray-1);
+
+  /* Elevation is a hairline ring plus a short drop, never a blur: the card
+     edge stays crisp and the lift is felt rather than seen. */
+  --elevation-ring:
+    0 0 0 1px oklch(0 0 0 / 0.06), 0 1px 2px -1px oklch(0 0 0 / 0.06),
+    0 2px 4px 0 oklch(0 0 0 / 0.04);
+  --elevation-ring-hover:
+    0 0 0 1px oklch(0 0 0 / 0.08), 0 1px 2px -1px oklch(0 0 0 / 0.08),
+    0 2px 4px 0 oklch(0 0 0 / 0.06);
+  --image-outline: oklch(0 0 0 / 0.1);
+
+  /* One reading measure for the whole site: the home column, the article body
+     and the legal pages all land on it. */
+  --measure: 38.125rem;
 
   /* Rainbow accent: one lightness/chroma pair, hues supplied per gradient stop. */
   --rainbow-l: 0.56;
@@ -52,312 +80,304 @@
   --shimmer-base: oklch(0.52 0.16 315);
   --shimmer-sweep: oklch(0.38 0.16 315);
 
-  /* Grid mode: structural rules and softer row rules. Both collapse to
-     transparent when grid mode is off, which is the whole toggle. */
-  --grid-line: color-mix(in oklch, var(--line) 62%, transparent);
-  --grid-line-soft: color-mix(in oklch, var(--line) 34%, transparent);
-
+  /* Aliases consumed by the coss primitives (`Button`). */
   --background: var(--bg);
   --foreground: var(--fg);
   --primary: var(--fg);
   --primary-foreground: var(--bg);
-  --accent: var(--surface-raised);
-  --accent-foreground: var(--fg);
-  --card: var(--surface);
-  --card-foreground: var(--fg);
-  --popover: var(--surface-elevated);
-  --popover-foreground: var(--fg);
-  --secondary: var(--surface);
+  --secondary: var(--control);
   --secondary-foreground: var(--fg);
-  --muted: var(--surface-elevated);
+  --accent: var(--control);
+  --accent-foreground: var(--fg);
+  --muted: var(--control);
   --muted-foreground: var(--fg-muted);
-  --destructive: oklch(0.505 0.195 25);
-  --destructive-foreground: var(--neutral-canvas);
+  --popover: var(--surface);
+  --popover-foreground: var(--fg);
   --border: var(--line);
   --input: var(--line);
-  --ring: var(--brand);
-  --chart-1: var(--brand);
-  --chart-2: var(--available);
-  --chart-3: var(--info);
-  --chart-4: var(--fg-faint);
-  --chart-5: var(--destructive);
-  --sidebar: var(--surface-elevated);
-  --sidebar-foreground: var(--fg);
-  --sidebar-primary: var(--brand);
-  --sidebar-primary-foreground: var(--brand-contrast);
-  --sidebar-accent: var(--surface);
-  --sidebar-accent-foreground: var(--fg);
-  --sidebar-border: var(--line);
-  --sidebar-ring: var(--brand);
+  --ring: var(--focus);
 }
 
 .dark {
   color-scheme: dark;
 
-  /* Navy dark ramp, unchanged by the neutral light theme. */
-  --bg: var(--navy-ink);
-  --fg: var(--navy-canvas);
-  --fg-muted: var(--navy-raised);
-  --fg-faint: var(--navy-hairline);
-  --brand: oklch(0.76 0.1 270.7);
-  --brand-hover: var(--navy-media);
-  --brand-contrast: var(--navy-ink);
-  --surface-elevated: oklch(0.244 0.075 269);
-  --surface: oklch(0.2852 0.072 272);
-  --surface-raised: oklch(0.3424 0.067 276);
-  --line: oklch(0.4296 0.06 282);
-  --line-hover: oklch(0.5114 0.052 286);
+  --bg: var(--gray-dark-1);
+  --surface: var(--gray-dark-2);
+  --surface-hover: var(--gray-dark-3);
+  --control: var(--gray-dark-4);
+  --control-hover: var(--gray-dark-6);
+  --line: var(--gray-dark-5);
+  --line-strong: var(--gray-dark-8);
+  --selection: var(--gray-dark-7);
+  --fg-faint: var(--gray-dark-9);
+  --fg-muted: var(--gray-dark-10);
+  --fg-body: var(--gray-dark-11);
+  --fg: var(--gray-dark-12);
   --available: oklch(0.76 0.15 150);
-  --info: oklch(0.76 0.115 250);
-  --glass-highlight: oklch(0.9439 0.0077 48.7 / 0.1);
-  --accent: var(--surface-raised);
   --destructive: oklch(0.704 0.18 22);
-  --destructive-foreground: var(--navy-ink);
+  --destructive-foreground: var(--gray-dark-1);
+
+  --elevation-ring:
+    0 0 0 1px oklch(1 0 0 / 0.07), 0 1px 2px -1px oklch(0 0 0 / 0.4),
+    0 2px 4px 0 oklch(0 0 0 / 0.3);
+  --elevation-ring-hover:
+    0 0 0 1px oklch(1 0 0 / 0.11), 0 1px 2px -1px oklch(0 0 0 / 0.4),
+    0 2px 4px 0 oklch(0 0 0 / 0.3);
+  --image-outline: oklch(1 0 0 / 0.1);
+
   --rainbow-l: 0.79;
   --rainbow-c: 0.15;
   --shimmer-base: oklch(0.82 0.132 315);
   --shimmer-sweep: oklch(0.95 0.05 315);
 }
 
-:root[data-grid="off"] {
-  --grid-line: transparent;
-  --grid-line-soft: transparent;
-}
-
 @theme inline {
-  --color-grid: var(--grid-line);
-  --color-grid-soft: var(--grid-line-soft);
+  --color-canvas: var(--bg);
+  --color-surface: var(--surface);
+  --color-surface-hover: var(--surface-hover);
+  --color-control: var(--control);
+  --color-control-hover: var(--control-hover);
+  --color-line: var(--line);
+  --color-line-strong: var(--line-strong);
+  --color-fg: var(--fg);
+  --color-fg-body: var(--fg-body);
+  --color-fg-muted: var(--fg-muted);
+  --color-fg-faint: var(--fg-faint);
+  --color-available: var(--available);
+
   --color-background: var(--background);
   --color-foreground: var(--foreground);
-  --color-border: var(--border);
-  --color-ring: var(--ring);
-  --color-brand: var(--brand);
-  --color-brand-hover: var(--brand-hover);
-  --color-available: var(--available);
-  --color-info: var(--info);
-  --color-surface-elevated: var(--surface-elevated);
-  --color-surface: var(--surface);
-  --color-glass-bg: var(--surface);
-  --color-glass-border: var(--line);
-  --font-sans: var(--font-geist-sans), ui-sans-serif, system-ui, sans-serif;
-  --font-display:
-    var(--font-hanken-grotesk), "Hanken Grotesk", ui-sans-serif, system-ui,
-    sans-serif;
-  --font-elegant:
-    var(--font-hanken-grotesk), "Hanken Grotesk", ui-sans-serif, system-ui,
-    sans-serif;
-  --font-mono: var(--font-geist-mono), "Geist Mono", ui-monospace, monospace;
-  --font-pixel-grid: var(--font-geist-pixel-grid), monospace;
-  --font-pixel-circle: var(--font-geist-pixel-circle), monospace;
-  --radius-sm: 0;
-  --radius-md: 0;
-  --radius-lg: 0;
-  --radius-xl: 0;
-  --color-destructive-foreground: var(--destructive-foreground);
-  --color-sidebar-ring: var(--sidebar-ring);
-  --color-sidebar-border: var(--sidebar-border);
-  --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
-  --color-sidebar-accent: var(--sidebar-accent);
-  --color-sidebar-primary-foreground: var(--sidebar-primary-foreground);
-  --color-sidebar-primary: var(--sidebar-primary);
-  --color-sidebar-foreground: var(--sidebar-foreground);
-  --color-sidebar: var(--sidebar);
-  --color-chart-5: var(--chart-5);
-  --color-chart-4: var(--chart-4);
-  --color-chart-3: var(--chart-3);
-  --color-chart-2: var(--chart-2);
-  --color-chart-1: var(--chart-1);
-  --color-input: var(--input);
-  --color-destructive: var(--destructive);
-  --color-accent-foreground: var(--accent-foreground);
-  --color-accent: var(--accent);
-  --color-muted-foreground: var(--muted-foreground);
-  --color-muted: var(--muted);
-  --color-secondary-foreground: var(--secondary-foreground);
-  --color-secondary: var(--secondary);
-  --color-primary-foreground: var(--primary-foreground);
   --color-primary: var(--primary);
-  --color-popover-foreground: var(--popover-foreground);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
   --color-popover: var(--popover);
-  --color-card-foreground: var(--card-foreground);
-  --color-card: var(--card);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-border: var(--border);
+  --color-input: var(--input);
+  --color-ring: var(--ring);
+  --color-destructive: var(--destructive);
+  --color-destructive-foreground: var(--destructive-foreground);
+
+  --shadow-ring: var(--elevation-ring);
+  --shadow-ring-hover: var(--elevation-ring-hover);
+
+  --font-sans:
+    var(--font-geist-sans), "Geist", ui-sans-serif, system-ui, sans-serif;
+  --font-mono: var(--font-geist-mono), "Geist Mono", ui-monospace, monospace;
+  --font-serif:
+    var(--font-instrument-serif), "Instrument Serif", ui-serif, Georgia, serif;
+  --font-signature: var(--font-petemoss), "Petemoss", cursive;
 }
 
 @layer base {
-  * {
-    box-sizing: border-box;
+  html {
+    /* Anchored headings land with a little air above them instead of flush
+       against the top edge. */
+    scroll-padding-top: 1.5rem;
   }
 
-  html,
+  @media (prefers-reduced-motion: no-preference) {
+    html {
+      scroll-behavior: smooth;
+    }
+  }
+
   body {
-    margin: 0;
-    padding: 0;
     background: var(--bg);
     color: var(--fg);
-    font-family:
-      var(--font-geist-sans),
-      "Geist",
-      system-ui,
-      -apple-system,
-      sans-serif;
+    font-family: var(--font-sans);
     font-feature-settings: "cv11", "ss01", "ss03";
-    -webkit-font-smoothing: antialiased;
+    line-height: 1.625;
     text-rendering: optimizeLegibility;
-    overflow-x: hidden;
   }
 
-  section[id] {
-    scroll-margin-top: 96px;
+  ::selection {
+    background: var(--selection);
+    color: var(--fg);
+  }
+
+  :focus-visible {
+    outline: 2px solid var(--focus);
+    outline-offset: 2px;
   }
 }
 
-.font-mono {
-  font-family: var(--font-geist-mono), "Geist Mono", ui-monospace, monospace;
+/* A link inside running text: ink against the muted paragraph, with an
+   underline in a rule tone that only darkens on hover. The underline keeps
+   links recognizable without leaning on the color difference alone. */
+.prose-link {
+  color: var(--fg);
+  font-weight: 450;
+  text-decoration-line: underline;
+  text-decoration-color: var(--line-strong);
+  text-underline-offset: 3px;
+  transition-property: color, text-decoration-color;
+  transition-duration: 150ms;
+  transition-timing-function: ease-out;
 }
 
-.font-sans {
-  font-family: var(--font-geist-sans), "Geist", system-ui, sans-serif;
+@media (hover: hover) {
+  .prose-link:hover {
+    text-decoration-color: var(--fg-muted);
+  }
 }
 
-.font-serif {
-  font-family:
-    var(--font-instrument-serif), "Instrument Serif", ui-serif, Georgia, serif;
-  font-weight: 400;
-}
-
-.font-signature {
-  font-family: var(--font-signature), "Petemoss", cursive;
-  font-weight: 400;
-}
-
-/* Grid mode fades the rules in and out instead of snapping them. */
-[class~="border-grid"],
-[class~="border-grid-soft"] {
-  transition: border-color 260ms ease;
-}
-
-.scrollbar-hide {
-  scrollbar-width: none;
-}
-
-.scrollbar-hide::-webkit-scrollbar {
-  display: none;
-}
-
-.icon-btn {
-  appearance: none;
+/* Icon-only chrome: back, copy link, theme. The visible disc is 36px; the
+   pseudo-element extends the target to 44px without growing the disc. */
+.icon-button {
+  position: relative;
   display: inline-flex;
-  width: 20px;
-  height: 20px;
+  flex: none;
   align-items: center;
   justify-content: center;
-  padding: 0;
-  border: 0;
-  background: transparent;
-  color: var(--fg-muted);
+  width: 2.25rem;
+  height: 2.25rem;
+  border-radius: 9999px;
+  background: var(--control);
+  color: var(--fg-faint);
   cursor: pointer;
+  transition-property: color, background-color, scale;
+  transition-duration: 150ms;
+  transition-timing-function: ease-out;
 }
 
-.copy-link {
-  color: var(--fg);
-  font-weight: 620;
-  text-decoration: none;
+.icon-button::after {
+  content: "";
+  position: absolute;
+  inset: -0.25rem;
+  border-radius: inherit;
 }
 
-.copy-link:hover {
-  text-decoration: underline;
-  text-underline-offset: 3px;
+@media (hover: hover) {
+  .icon-button:hover {
+    background: var(--control-hover);
+    color: var(--fg);
+  }
+}
+
+.icon-button:active {
+  @media (prefers-reduced-motion: no-preference) {
+    scale: 0.96;
+  }
+}
+
+/* Two glyphs share one grid cell and cross-fade, so a control never reflows
+   when it confirms an action and the new glyph lands exactly where the old one
+   was. `data-state="b"` shows the second glyph. */
+.icon-swap {
+  display: inline-grid;
+  flex: none;
+}
+
+.icon-swap-glyph {
+  grid-area: 1 / 1;
+  display: grid;
+  place-items: center;
+  transition:
+    opacity 300ms cubic-bezier(0.2, 0, 0, 1),
+    transform 300ms cubic-bezier(0.2, 0, 0, 1),
+    filter 300ms cubic-bezier(0.2, 0, 0, 1);
+}
+
+.icon-swap[data-state="a"] .icon-swap-glyph:last-child,
+.icon-swap[data-state="b"] .icon-swap-glyph:first-child {
+  opacity: 0;
+  transform: scale(0.25);
+  filter: blur(4px);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .icon-swap-glyph {
+    transition: opacity 150ms ease-out;
+  }
+
+  .icon-swap[data-state="a"] .icon-swap-glyph:last-child,
+  .icon-swap[data-state="b"] .icon-swap-glyph:first-child {
+    transform: none;
+    filter: none;
+  }
 }
 
 .legal-article {
-  max-width: 610px;
+  max-width: var(--measure);
 }
 
 .legal-article h1 {
-  margin: 0 0 34px;
+  margin: 0 0 20px;
   color: var(--fg);
-  font-size: 30px;
-  line-height: 1.22;
-  font-weight: 620;
-  letter-spacing: 0;
+  font-size: 16px;
+  line-height: 1.625;
+  font-weight: 550;
+  text-wrap: balance;
 }
 
 .legal-article h2 {
-  margin: 40px 0 12px;
+  margin: 48px 0 12px;
   color: var(--fg);
   font-size: 16px;
-  line-height: 1.35;
-  font-weight: 650;
-  letter-spacing: 0;
+  line-height: 1.625;
+  font-weight: 550;
+  text-wrap: balance;
 }
 
 .legal-article p,
 .legal-article li {
-  color: var(--fg-muted);
+  color: var(--fg-body);
   font-size: 16px;
-  font-weight: 300;
   line-height: 1.625;
-  letter-spacing: -0.01em;
 }
 
 .legal-article p {
-  margin: 0 0 18px;
+  margin: 0 0 16px;
 }
 
 .legal-article ul {
   margin: 0 0 24px;
-  padding-left: 18px;
+  padding-inline-start: 18px;
+  list-style: disc;
+}
+
+.legal-article li::marker {
+  color: var(--fg-faint);
 }
 
 .legal-article strong {
   color: var(--fg);
-  font-weight: 650;
+  font-weight: 550;
 }
 
 .legal-article a {
   color: var(--fg);
-  text-decoration: none;
+  text-decoration-line: underline;
+  text-decoration-color: var(--line-strong);
+  text-underline-offset: 3px;
 }
 
 .legal-article a:hover {
-  color: var(--fg-muted);
+  text-decoration-color: var(--fg-muted);
 }
 
-/* Long-form blog typography. Deliberately separate from `.legal-article`: the
-   legal pages read muted at weight 300, an article reads at full ink weight.
-   Every block gap is a multiple of 26px, which is exactly one line box at 16px
-   and line-height 1.625, so the vertical rhythm survives any mix of blocks. */
+/* Long-form blog typography. Deliberately separate from `.legal-article`: a
+   legal page is reference text, an article is read end to end. Every block gap
+   is a multiple of 26px, which is exactly one line box at 16px and
+   line-height 1.625, so the vertical rhythm survives any mix of blocks. */
 .article {
-  --article-measure: 610px;
   --article-rhythm: 26px;
   --minimap-dash: 24px;
 
   /* Distance from the dashes to the text column. Wide enough that the stack
      reads as its own object in the margin rather than as a ragged left edge of
-     the paragraph; every pixel added here also raises the container width the
-     minimap needs, so it is a trade against the range of viewports that get
-     it at all. */
+     the paragraph. */
   --minimap-gutter: 80px;
-
-  /* The minimap appears on the space the article actually got, not on the
-     viewport: the shell spends a fixed 640px on its own rails, so the same
-     window width leaves very different room on different routes. */
-  container-type: inline-size;
-  container-name: article;
 }
 
-.article-layout {
-  display: grid;
-  grid-template-columns: minmax(0, var(--article-measure));
-  justify-content: center;
-}
-
-.article-main {
-  min-width: 0;
-}
-
-/* Out of the layout entirely until there is room for it: no reserved track, so
-   the text column stays centred whether the minimap is there or not. */
+/* Out of the layout entirely until there is room for it, so the text column
+   stays centered whether the minimap is there or not. */
 .article-minimap {
   display: none;
 }
@@ -366,9 +386,7 @@
   margin: 0;
   padding: 0;
   list-style: none;
-}
 
-.article-minimap ol {
   /* Overwritten by the component so a long article still fits the window. */
   --minimap-step: 7px;
 }
@@ -397,6 +415,7 @@
   right: 0;
   left: 0;
   height: 1px;
+  border-radius: 1px;
   background: var(--fg-faint);
   transform: translateY(-50%) scaleX(calc(1 + var(--proximity) * 0.75));
   transform-origin: right center;
@@ -416,7 +435,7 @@
 }
 
 .article-minimap li[data-kind="block"] .dash::before {
-  background: color-mix(in oklch, var(--fg-faint) 62%, transparent);
+  background: var(--line-strong);
 }
 
 .article-minimap a.dash:hover::before,
@@ -424,7 +443,7 @@
   background: var(--fg);
 }
 
-/* The scroll it triggers is now animated, so the mark answers the click on the
+/* The scroll it triggers is animated, so the mark answers the click on the
    frame it happens rather than leaving the reader waiting on the movement. */
 .article-minimap a.dash:active::before {
   height: 2px;
@@ -438,20 +457,24 @@
   background: var(--fg);
 }
 
-/* Revealed leftwards, away from the text: the gutter is the only space the
+/* Revealed leftwards, away from the text: the margin is the only space the
    label can take without ever overlapping the column. It fades in on approach
-   rather than on a precise hover, which is the whole point of the proximity
-   read: the nearest entry names itself before the pointer arrives. */
+   rather than on a precise hover: the nearest entry names itself before the
+   pointer arrives. Long headings wrap instead of running off the window. */
 .article-minimap a.dash span {
   position: absolute;
   top: 50%;
   right: calc(100% + 10px);
-  padding: 2px 6px;
+  width: max-content;
+  max-width: 13rem;
+  padding: 2px 8px;
+  border-radius: 6px;
   background: var(--bg);
   color: var(--fg);
   font-size: 12px;
-  line-height: 1.3;
-  white-space: nowrap;
+  line-height: 1.4;
+  text-align: end;
+  text-wrap: balance;
   transform: translateY(-50%);
   opacity: clamp(0, calc((var(--proximity) - 0.85) * 6.7), 1);
   pointer-events: none;
@@ -470,32 +493,24 @@
   }
 }
 
-/* Room for the measure, the gutter and the dashes, and never below the 1024px
-   viewport.
+/* Room for the measure, the gutter, the dashes and a wrapped label on the left
+   of the centered column. Fixed rather than sticky: it is centered on the
+   window itself, and `50%` of a fixed box's containing block is the viewport
+   without its scrollbar, which is the same axis the column is centered on. */
+@media (min-width: 74rem) {
+  .article-minimap {
+    display: block;
+    position: fixed;
+    top: 50%;
+    right: calc(50% + var(--measure) / 2 + var(--minimap-gutter));
+    z-index: 20;
+    transform: translateY(-50%);
+  }
 
-   Fixed rather than sticky for two reasons: it is centred on the window itself
-   rather than on a slice of the article, and the shell scrolls an inner
-   container, which clips its own overflow. Sticky inside that container would
-   cut every label that runs longer than the gutter.
-
-   The shell keeps its two rails and its padding symmetric, so the text column
-   is centred on the viewport and `50vw` is the same anchor the grid uses. */
-@media (min-width: 1024px) {
-  @container article (min-width: 714px) {
-    .article-minimap {
-      display: block;
-      position: fixed;
-      top: 50%;
-      right: calc(50vw + var(--article-measure) / 2 + var(--minimap-gutter));
-      z-index: 20;
-      transform: translateY(-50%);
-    }
-
-    /* The two are mutually exclusive by construction, which is what keeps a
-       single table of contents landmark in the accessibility tree. */
-    .article-toc {
-      display: none;
-    }
+  /* The two are mutually exclusive by construction, which is what keeps a
+     single table of contents landmark in the accessibility tree. */
+  .article-toc {
+    display: none;
   }
 }
 
@@ -504,15 +519,20 @@
    regime costs no client JavaScript and survives scripting being off. */
 .article-toc {
   margin-top: var(--article-rhythm);
-  border: 1px solid var(--line);
+  border-radius: 12px;
+  background: var(--surface);
+  box-shadow: var(--elevation-ring);
 }
 
 .article-toc summary {
   display: flex;
+  align-items: center;
   justify-content: space-between;
-  padding: 10px 14px;
+  min-height: 44px;
+  padding: 0 16px;
   color: var(--fg);
-  font-size: 13px;
+  font-size: 14px;
+  font-weight: 450;
   cursor: pointer;
   list-style: none;
 }
@@ -536,21 +556,22 @@
 
 .article-toc ol {
   margin: 0;
-  padding: 10px 14px;
+  padding: 10px 16px 12px;
   list-style: none;
 }
 
 .article-toc li[data-depth="3"] {
-  padding-left: 16px;
+  padding-inline-start: 16px;
 }
 
 .article-toc a {
   display: block;
-  padding: 3px 0;
+  padding: 4px 0;
   color: var(--fg-muted);
-  font-size: 13px;
+  font-size: 14px;
   line-height: 1.5;
   text-decoration: none;
+  transition: color 150ms ease-out;
 }
 
 .article-toc a:hover {
@@ -558,17 +579,13 @@
 }
 
 .article-body {
-  /* Room to scroll past the last line. Without it the closing paragraph stops
-     at the bottom edge of the window and cannot be brought up to a comfortable
-     reading position, which is where a reader spends the end of a long piece.
-     Eight rhythm units, so the page still lands on the same ladder. */
-  padding-bottom: calc(var(--article-rhythm) * 8);
-  max-width: var(--article-measure);
-  color: var(--fg);
+  /* Room to scroll past the last line, so the closing paragraph can be brought
+     up to a comfortable reading position. */
+  padding-bottom: calc(var(--article-rhythm) * 2);
+  max-width: var(--measure);
+  color: var(--fg-body);
   font-size: 16px;
-  font-weight: 400;
   line-height: 1.625;
-  letter-spacing: -0.01em;
 }
 
 .article-body > :first-child {
@@ -583,45 +600,52 @@
   margin: 0 0 var(--article-rhythm);
 }
 
-/* Hierarchy is carried by size, weight and the space above a heading, never by
-   a grid rule: with grid mode off the sections still read as sections. */
-/* Section headings run in the same serif as the article title, so the page has
-   one voice from the h1 down. The family carries the hierarchy that weight used
-   to: Instrument Serif ships a single 400, and asking for 620 would synthesise
-   a fake bold. Tracking goes back to normal for the same reason — the negative
-   value was cut for Geist and closes a display serif up too far. */
+/* Section headings stay at body size: weight, the space above and the rule
+   that runs to the column edge carry the hierarchy, not scale. */
 .article-body h2,
 .article-body h3 {
   color: var(--fg);
-  font-family:
-    var(--font-instrument-serif), "Instrument Serif", ui-serif, Georgia, serif;
-  font-weight: 400;
-  letter-spacing: normal;
+  font-weight: 550;
   line-height: var(--article-rhythm);
-  scroll-margin-top: 96px;
 }
 
 .article-body h2 {
+  display: flex;
+  align-items: center;
+  gap: 12px;
   margin: calc(var(--article-rhythm) * 3) 0 var(--article-rhythm);
-  font-size: 24px;
+  font-size: 16px;
+}
+
+.article-body h2 > span {
+  flex: 0 1 auto;
+  text-wrap: balance;
+}
+
+.article-body h2::after {
+  content: "";
+  flex: 1 0 2rem;
+  height: 1px;
+  background: var(--line);
 }
 
 .article-body h3 {
-  margin: calc(var(--article-rhythm) * 2) 0 var(--article-rhythm);
-  font-size: 19px;
+  margin: calc(var(--article-rhythm) * 2) 0 calc(var(--article-rhythm) / 2);
+  font-size: 16px;
+  text-wrap: balance;
 }
 
 /* Tailwind preflight strips list markers globally, so long-form has to ask for
    them back explicitly. */
 .article-body ul {
   margin: 0 0 var(--article-rhythm);
-  padding-left: 22px;
+  padding-inline-start: 22px;
   list-style: disc;
 }
 
 .article-body ol {
   margin: 0 0 var(--article-rhythm);
-  padding-left: 22px;
+  padding-inline-start: 22px;
   list-style: decimal;
 }
 
@@ -635,8 +659,8 @@
 
 .article-body blockquote {
   margin: calc(var(--article-rhythm) * 2) 0;
-  padding-left: 20px;
-  border-left: 2px solid var(--line);
+  padding-inline-start: 20px;
+  border-inline-start: 2px solid var(--line-strong);
   color: var(--fg-muted);
 }
 
@@ -648,9 +672,11 @@
 
 .article-body a {
   color: var(--fg);
+  font-weight: 450;
   text-decoration: underline;
-  text-decoration-color: var(--line);
+  text-decoration-color: var(--line-strong);
   text-underline-offset: 3px;
+  transition: text-decoration-color 150ms ease-out;
 }
 
 .article-body a:hover {
@@ -659,70 +685,97 @@
 
 .article-body strong {
   color: var(--fg);
-  font-weight: 650;
+  font-weight: 550;
 }
 
 .article-body img {
   max-width: 100%;
   height: auto;
+  border-radius: 12px;
+  outline: 1px solid var(--image-outline);
+  outline-offset: -1px;
 }
 
 .article-body :not(pre) > code {
-  padding: 0.1em 0.34em;
+  padding: 2px 4px;
   border: 1px solid var(--line);
+  border-radius: 6px;
   background: var(--surface);
-  font-family: var(--font-geist-mono), "Geist Mono", ui-monospace, monospace;
+  font-family: var(--font-mono);
   font-size: 0.875em;
+  overflow-wrap: break-word;
 }
 
 /* GFM tables are not available: enabling them would mean a remark plugin, a
-   second production dependency and an edit to `next.config.ts`, all three of
-   which the PRD rules out. Tables are authored as `<Table>` instead, and the
-   wrapper that component supplies is the scroll container, so the table keeps
-   `display: table` and with it the row and cell semantics that moving the
-   overflow onto the table itself would have cost. */
+   second production dependency and an edit to `next.config.ts`. Tables are
+   authored as `<Table>` instead, and the wrapper that component supplies is the
+   scroll container, so the table keeps `display: table` and with it the row and
+   cell semantics that moving the overflow onto the table itself would cost. */
 .article-table {
   margin: calc(var(--article-rhythm) * 2) 0;
   overflow-x: auto;
   max-width: 100%;
+  border-radius: 12px;
+  background: var(--surface);
+  box-shadow: var(--elevation-ring);
 }
 
 .article-body table {
+  min-width: 100%;
   border-collapse: collapse;
   font-size: 14px;
 }
 
 /* Cells held on one line are what makes a wide table exceed the wrapper and
-   scroll inside it rather than wrapping down to the measure. */
+   scroll inside it rather than wrapping down to the measure. The ring on the
+   wrapper is the outer frame, so the cells only draw the inner rules. */
 .article-body th,
 .article-body td {
   padding: 8px 12px;
   border: 1px solid var(--line);
-  text-align: left;
+  text-align: start;
   white-space: nowrap;
   font-weight: inherit;
 }
 
+.article-body tr:first-child > * {
+  border-top: 0;
+}
+
+.article-body tr:last-child > * {
+  border-bottom: 0;
+}
+
+.article-body tr > :first-child {
+  border-inline-start: 0;
+}
+
+.article-body tr > :last-child {
+  border-inline-end: 0;
+}
+
 .article-body th {
-  background: var(--surface);
+  background: var(--surface-hover);
   color: var(--fg);
-  font-weight: 620;
+  font-weight: 550;
 }
 
 /* The frame belongs to the design system, not to the Shiki theme: the surface
    token supplies the background so both themes stay on the site palette. */
 .article-code {
   margin: calc(var(--article-rhythm) * 2) 0;
-  border: 1px solid var(--line);
+  overflow: hidden;
+  border-radius: 12px;
   background: var(--surface);
+  box-shadow: var(--elevation-ring);
 }
 
 .article-code pre {
   margin: 0;
-  padding: 20px;
+  padding: 16px 20px;
   overflow-x: auto;
   background: transparent;
-  font-family: var(--font-geist-mono), "Geist Mono", ui-monospace, monospace;
+  font-family: var(--font-mono);
   font-size: 14px;
   line-height: var(--article-rhythm);
   tab-size: 2;
@@ -734,16 +787,15 @@
   min-width: 100%;
 }
 
-/* A flow diagram, not a code block: box-drawing characters were the obvious
-   first reach and the wrong one, because Geist Mono does not join them, so the
-   corners never meet the sides. Real boxes also keep the labels as selectable,
+/* A flow diagram, not a code block: real boxes keep the labels as selectable,
    translatable text instead of an ASCII picture. The nodes share the width
    equally, which is what makes the row read as one sequence. */
 .article-diagram {
   margin: calc(var(--article-rhythm) * 2) 0;
   padding: 24px 20px;
-  border: 1px solid var(--line);
+  border-radius: 12px;
   background: var(--surface);
+  box-shadow: var(--elevation-ring);
 }
 
 .article-diagram-flow {
@@ -761,12 +813,13 @@
   gap: 2px;
   padding: 16px 8px;
   border: 1px solid var(--line);
+  border-radius: 8px;
   background: var(--bg);
   text-align: center;
 }
 
 .article-diagram-role {
-  font-weight: 500;
+  font-weight: 550;
   font-size: 15px;
   color: var(--fg);
 }
@@ -800,7 +853,7 @@
 
 /* Below the point where three columns stop holding a two-word label, the
    sequence stacks and the arrows turn with it. */
-@media (max-width: 520px) {
+@media (max-width: 32.5rem) {
   .article-diagram-flow {
     flex-direction: column;
   }
@@ -813,12 +866,10 @@
 /* The one interactive block an article can contain. It borrows the geometry of
    a code fence so it sits in the same column rhythm, and the whole row is the
    control: a command the reader is meant to run should not need a target to
-   aim at. Square, like every other surface here. */
+   aim at. */
 .article-command {
-  /* The live region inside is `sr-only`, so absolutely positioned. Without a
-     positioned ancestor its containing block is the viewport, which puts a
-     1px box thousands of pixels down the initial containing block and makes
-     the whole document scroll behind the shell instead of the article column. */
+  /* The live region inside is `sr-only`, so absolutely positioned; this keeps
+     its containing block on the row rather than on the viewport. */
   position: relative;
   display: flex;
   align-items: center;
@@ -827,26 +878,26 @@
   width: 100%;
   margin: var(--article-rhythm) 0;
   padding: 14px 18px;
-  border: 1px solid var(--line);
+  border-radius: 12px;
   background: var(--surface);
+  box-shadow: var(--elevation-ring);
   cursor: pointer;
-  text-align: left;
-  transition:
-    border-color 160ms ease,
-    scale 160ms ease;
+  text-align: start;
+  transition-property: box-shadow, scale;
+  transition-duration: 150ms;
+  transition-timing-function: ease-out;
 }
 
-.article-command:hover {
-  border-color: var(--line-hover);
+@media (hover: hover) {
+  .article-command:hover {
+    box-shadow: var(--elevation-ring-hover);
+  }
 }
 
 .article-command:active {
-  scale: 0.995;
-}
-
-.article-command:focus-visible {
-  outline: 2px solid var(--brand);
-  outline-offset: 2px;
+  @media (prefers-reduced-motion: no-preference) {
+    scale: 0.99;
+  }
 }
 
 /* The band is a second copy of the text, clipped to the glyphs and swept
@@ -857,7 +908,7 @@
   min-width: 0;
   overflow: hidden;
   color: var(--fg-muted);
-  font-family: var(--font-geist-mono), "Geist Mono", ui-monospace, monospace;
+  font-family: var(--font-mono);
   font-size: 15px;
   line-height: 1.4;
   white-space: nowrap;
@@ -892,46 +943,23 @@
   }
 }
 
-/* Both icons stay in the same grid cell and cross-fade, so the row never
-   reflows on copy and the checkmark lands exactly where the copy icon was. */
-.article-command-icon {
-  display: inline-grid;
-  flex: none;
+.article-command .icon-swap {
   color: var(--fg-faint);
 }
 
-.article-command:hover .article-command-icon {
-  color: var(--fg-muted);
+@media (hover: hover) {
+  .article-command:hover .icon-swap {
+    color: var(--fg-muted);
+  }
 }
 
-.article-command-glyph {
-  grid-area: 1 / 1;
-  display: grid;
-  place-items: center;
-  transition:
-    opacity 300ms cubic-bezier(0.2, 0, 0, 1),
-    transform 300ms cubic-bezier(0.2, 0, 0, 1),
-    filter 300ms cubic-bezier(0.2, 0, 0, 1);
-}
-
-.article-command-icon[data-state="b"] .article-command-glyph:last-child {
+.article-command .icon-swap[data-state="b"] .icon-swap-glyph:last-child {
   color: var(--available);
-}
-
-.article-command-icon[data-state="a"] .article-command-glyph:last-child,
-.article-command-icon[data-state="b"] .article-command-glyph:first-child {
-  opacity: 0;
-  transform: scale(0.25);
-  filter: blur(4px);
 }
 
 @media (prefers-reduced-motion: reduce) {
   .article-command-text::before {
     display: none;
-  }
-
-  .article-command-glyph {
-    transition: none;
   }
 }
 
@@ -1012,22 +1040,5 @@
     animation: none;
     background-image: none;
     color: var(--shimmer-base);
-  }
-}
-
-::selection {
-  background: color-mix(in oklch, var(--brand) 22%, transparent);
-  color: var(--fg);
-}
-
-:focus-visible {
-  outline: 2px solid var(--brand);
-  outline-offset: 4px;
-}
-
-@media (max-width: 560px) {
-  .legal-article h1 {
-    font-size: 28px;
-    line-height: 1.24;
   }
 }

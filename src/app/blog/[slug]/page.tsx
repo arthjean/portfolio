@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import Link from "next/link";
 import { notFound } from "next/navigation";
 
 import { ArticleMinimap } from "@/components/blog/ArticleMinimap";
@@ -9,6 +10,7 @@ import {
   getPostBySlug,
   getPublishedPosts,
   hasMinimap,
+  type Post,
 } from "@/lib/blog";
 import { getBlogPostingJsonLd } from "@/lib/json-ld";
 import { siteConfig } from "@/lib/site.config";
@@ -93,6 +95,13 @@ export default async function PostPage({ params }: PostPageProps) {
   const { default: Content } = await import(`@/content/blog/${slug}.mdx`);
   const { meta } = post;
 
+  /* Same list the route was generated from, so drafts only link to drafts in
+     development and the pager never points at a page the build skipped. */
+  const list = includeDrafts ? await getAllPosts() : await getPublishedPosts();
+  const index = list.findIndex((entry) => entry.slug === slug);
+  const newer = index > 0 ? list[index - 1] : undefined;
+  const older = index >= 0 ? list[index + 1] : undefined;
+
   /* One decision, two renderings: an article long enough to need its structure
      exposed gets the minimap where there is margin for it and the disclosure
      where there is not. CSS picks between them; neither exists otherwise. */
@@ -108,60 +117,86 @@ export default async function PostPage({ params }: PostPageProps) {
           __html: JSON.stringify(jsonLd.graph).replace(/</g, "\\u003c"),
         }}
       />
-      <article className="article p-4">
-        {/* Outside the layout grid on purpose: it sticks against the article as a
-          whole, and a zero-height grid row would give it nothing to travel in. */}
+      <article className="article">
+        {/* Outside the text flow on purpose: it is fixed against the window and
+            only shows where the margin is wide enough to hold it. */}
         {withToc && <ArticleMinimap entries={post.toc} />}
 
-        <div className="article-layout">
-          <div className="article-main">
-            <header className="border-grid-soft border-b border-dashed pb-6">
-              {meta.draft && (
-                <p className="text-foreground mb-3 inline-block border border-[color:var(--line)] px-2 py-0.5 font-mono text-xs uppercase">
-                  Draft
-                </p>
-              )}
+        <header>
+          {meta.draft && (
+            <p className="bg-control text-fg-body mb-4 inline-flex rounded-full px-2.5 font-mono text-xs leading-6">
+              Draft
+            </p>
+          )}
 
-              <h1 className="text-foreground font-serif text-[44px] leading-[52px]">
-                {meta.title}
-              </h1>
+          <h1 className="text-fg font-[550] text-balance">{meta.title}</h1>
 
-              <p className="text-muted-foreground mt-3 text-sm leading-relaxed font-light">
-                {meta.description}
-              </p>
+          <p className="text-fg-muted mt-1 text-pretty">{meta.description}</p>
 
-              {/* Visible in the page, not only in the metadata: search and citation
-                agents cross-check the rendered date against the markup. */}
-              <p className="text-muted-foreground mt-4 flex flex-wrap items-center gap-2 text-xs font-light">
-                <time dateTime={meta.publishedAt}>
-                  {formatPostDate(meta.publishedAt)}
-                </time>
+          {/* Visible in the page, not only in the metadata: search and citation
+              agents cross-check the rendered date against the markup. */}
+          <p className="text-fg-muted mt-3 flex flex-wrap items-center gap-x-2 text-sm">
+            <time dateTime={meta.publishedAt}>
+              {formatPostDate(meta.publishedAt)}
+            </time>
 
-                {meta.updatedAt && (
-                  <>
-                    <span aria-hidden="true">·</span>
-                    <span>
-                      Updated{" "}
-                      <time dateTime={meta.updatedAt}>
-                        {formatPostDate(meta.updatedAt)}
-                      </time>
-                    </span>
-                  </>
-                )}
-
+            {meta.updatedAt && (
+              <>
                 <span aria-hidden="true">·</span>
-                <span>{post.readingTimeMinutes} min read</span>
-              </p>
-            </header>
+                <span>
+                  Updated{" "}
+                  <time dateTime={meta.updatedAt}>
+                    {formatPostDate(meta.updatedAt)}
+                  </time>
+                </span>
+              </>
+            )}
 
-            {withToc && <ArticleToc entries={post.toc} />}
+            <span aria-hidden="true">·</span>
+            <span>{post.readingTimeMinutes} min read</span>
+          </p>
+        </header>
 
-            <div className="article-body pt-[26px]">
-              <Content components={postMdxComponents(post.toc)} />
-            </div>
-          </div>
+        {withToc && <ArticleToc entries={post.toc} />}
+
+        <div className="article-body mt-12">
+          <Content components={postMdxComponents(post.toc)} />
         </div>
+
+        {(newer || older) && (
+          <nav
+            aria-label="More writing"
+            className="border-line mt-16 flex items-start justify-between gap-6 border-t pt-10 text-sm"
+          >
+            {newer && <PagerLink post={newer} label="Newer" />}
+            {older && <PagerLink post={older} label="Older" align="end" />}
+          </nav>
+        )}
       </article>
     </>
+  );
+}
+
+function PagerLink({
+  post,
+  label,
+  align = "start",
+}: {
+  post: Post;
+  label: string;
+  align?: "start" | "end";
+}) {
+  return (
+    <Link
+      href={`/blog/${post.slug}`}
+      className={`group flex max-w-[45%] flex-col gap-1 ${
+        align === "end" ? "ms-auto items-end text-end" : "items-start"
+      }`}
+    >
+      <span className="text-fg-muted font-medium">{label}</span>
+      <span className="text-fg-body group-hover:text-fg font-medium text-pretty transition-colors duration-150 ease-out">
+        {post.meta.title}
+      </span>
+    </Link>
   );
 }

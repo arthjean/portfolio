@@ -2,10 +2,13 @@
 
 import { useEffect, useState } from "react";
 
+/* The zone name comes from the formatter, so it reads CEST in summer and CET
+   in winter instead of a hardcoded label that is wrong half the year. */
 const formatter = new Intl.DateTimeFormat("en-GB", {
   hour: "2-digit",
   minute: "2-digit",
   timeZone: "Europe/Paris",
+  timeZoneName: "short",
 });
 
 export function LocalTime() {
@@ -18,9 +21,5 @@ export function LocalTime() {
     return () => clearInterval(id);
   }, []);
 
-  return (
-    <time className="inline-block pl-1 text-xs text-[color:var(--fg-faint)] tabular-nums">
-      {time ? `${time} CET` : " "}
-    </time>
-  );
+  return <time className="tabular-nums">{time ?? " "}</time>;
 }

@@ -139,8 +139,8 @@ export function ArticleMinimap({ entries }: { entries: TocEntry[] }) {
 
     measure();
 
-    // The shell scrolls an inner container rather than the document, and those
-    // scroll events only reach here during the capture phase.
+    // Capture phase, so a scroll from any nested scroller counts as well as
+    // the document's own.
     document.addEventListener("scroll", schedule, true);
     window.addEventListener("resize", schedule);
 

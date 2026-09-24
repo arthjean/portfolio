@@ -1,13 +1,13 @@
-const para =
-  "mt-6 border-y border-dashed border-grid-soft px-4 text-start font-sans text-base font-light leading-relaxed tracking-tight text-muted-foreground";
+const para = "text-fg-body mb-4 last:mb-0";
 
 export function BiographySection() {
   return (
-    <section id="about" className="pt-20" aria-labelledby="about-heading">
-      <h2
-        id="about-heading"
-        className="border-grid-soft text-foreground border-y border-dashed p-4 font-serif text-3xl leading-normal"
-      >
+    <section
+      id="about"
+      className="mt-16 sm:mt-24"
+      aria-labelledby="about-heading"
+    >
+      <h2 id="about-heading" className="text-fg mb-3 font-medium">
         About
       </h2>
 
@@ -24,9 +24,10 @@ export function BiographySection() {
           href="https://www.avancial.com/"
           target="_blank"
           rel="noopener noreferrer"
-          className="copy-link"
+          className="prose-link"
         >
           Avancial
+          <span className="sr-only"> (opens in a new tab)</span>
         </a>
         , the IT subsidiary of SNCF Group (France&apos;s national railway),
         working on data, testing, application monitoring, and user support. I
