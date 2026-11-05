@@ -11,7 +11,9 @@ const legalLinks = [
 ];
 
 export function FooterSection() {
-  const year = new Date().getFullYear();
+  /* The copyright year follows the last content update, not the clock: the
+     render stays pure and the notice dates what was actually published. */
+  const year = siteConfig.lastModified.slice(0, 4);
 
   return (
     <footer className="mt-24 sm:mt-32">
@@ -30,7 +32,7 @@ export function FooterSection() {
       <div className="text-fg-muted mt-8 flex flex-wrap items-center justify-between gap-x-6 gap-y-2 text-sm">
         <div className="flex flex-wrap items-center gap-x-4 gap-y-1">
           <p>
-            © {year} {siteConfig.company}
+            © {year} {siteConfig.name}
           </p>
           <nav aria-label="Legal">
             <ul className="flex gap-4">

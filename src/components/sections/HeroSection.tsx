@@ -12,8 +12,6 @@ function NewTabHint() {
   return <span className="sr-only"> (opens in a new tab)</span>;
 }
 
-const xHandle = `@${new URL(siteConfig.links.x).pathname.slice(1)}`;
-
 export function HeroSection() {
   return (
     <section aria-labelledby="hero-heading">
@@ -32,7 +30,7 @@ export function HeroSection() {
             {siteConfig.name}
           </h1>
           <p className="text-fg-muted leading-snug font-[450]">
-            {siteConfig.role}, founder of {siteConfig.company}
+            {siteConfig.role}
           </p>
         </div>
       </div>
@@ -56,8 +54,8 @@ export function HeroSection() {
           Paneflow
           <NewTabHint />
         </a>
-        , a native workspace for running coding agents in parallel. Most of what
-        I build is open source.
+        , a native workspace for running coding agents in parallel on Mac,
+        Windows, and Linux. Almost everything I build is open source.
       </p>
 
       <p className="text-fg-muted text-pretty">
@@ -77,25 +75,7 @@ export function HeroSection() {
           Avancial
           <NewTabHint />
         </a>
-        , the IT subsidiary of SNCF Group. You can reach me at{" "}
-        <a href={siteConfig.links.x} className="prose-link" {...newTab}>
-          {xHandle}
-          <NewTabHint />
-        </a>
-        , on{" "}
-        <a href={siteConfig.links.linkedin} className="prose-link" {...newTab}>
-          LinkedIn
-          <NewTabHint />
-        </a>{" "}
-        or via{" "}
-        <a
-          href={`mailto:${siteConfig.links.email}`}
-          className="prose-link whitespace-nowrap"
-        >
-          <Mail aria-hidden="true" strokeWidth={2} className={inlineIcon} />
-          email
-        </a>
-        , and see my code on{" "}
+        , the IT subsidiary of SNCF Group. My code is on{" "}
         <a
           href={siteConfig.links.github}
           className="prose-link whitespace-nowrap"
@@ -104,6 +84,24 @@ export function HeroSection() {
           <GithubIcon className={inlineIcon} />
           GitHub
           <NewTabHint />
+        </a>
+        , and you can reach me on{" "}
+        <a href={siteConfig.links.x} className="prose-link" {...newTab}>
+          X
+          <NewTabHint />
+        </a>
+        ,{" "}
+        <a href={siteConfig.links.linkedin} className="prose-link" {...newTab}>
+          LinkedIn
+          <NewTabHint />
+        </a>
+        , or by{" "}
+        <a
+          href={`mailto:${siteConfig.links.email}`}
+          className="prose-link whitespace-nowrap"
+        >
+          <Mail aria-hidden="true" strokeWidth={2} className={inlineIcon} />
+          email
         </a>
         .
       </p>

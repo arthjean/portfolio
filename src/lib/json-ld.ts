@@ -69,6 +69,7 @@ export function getJsonLd() {
     knowsAbout: [
       "Next.js",
       "Rust",
+      "Zig",
       "Tauri",
       "Artificial Intelligence",
       "AI agents",

@@ -12,14 +12,11 @@ export function BiographySection() {
       </h2>
 
       <p className={para}>
-        I&apos;m a builder and software engineer based in France. I build tools
-        for the people who build software, and the belief behind it is simple:
-        the way we ship software has changed a lot in the past few years, and
-        our working environment needs to catch up.
+        I&apos;m an independent software engineer based in Nantes, France.
       </p>
 
       <p className={para}>
-        I learned the craft as an application developer at{" "}
+        I cut my teeth at{" "}
         <a
           href="https://www.avancial.com/"
           target="_blank"
@@ -29,32 +26,55 @@ export function BiographySection() {
           Avancial
           <span className="sr-only"> (opens in a new tab)</span>
         </a>
-        , the IT subsidiary of SNCF Group (France&apos;s national railway),
-        working on data, testing, application monitoring, and user support. I
-        was the only developer there for two years, and I owned every technical
-        decision. I built an internal Gantt system used by several teams, and a
-        platform that automated commits, pushes, and deployments to an Azure VM
-        running Bonobo Git: basically Vercel, scoped to a locked-down enterprise
-        network. I also learned to build for whoever came next: reusable
-        back-end and UI components, a consistent design language, a boilerplate
-        for spinning up new tools. When I left, I wanted the team to stay
-        autonomous and keep a clear direction.
+        , the SNCF Group subsidiary (France&apos;s national railway) that tests
+        its software, monitors its applications, and supports its users. For two
+        years, I was the only developer on my team, with a simple mission: build
+        the internal tools the teams needed.
       </p>
 
       <p className={para}>
-        I started working AI into my process with GPT-3, then Copilot, before
-        gradually moving to Cursor, Claude Code, Codex, and more agentic
-        workflows. I design systems, write specs, orchestrate agents, review,
-        make the calls, and iterate from real usage.
+        For the testers, that meant a travel booking generator to simulate their
+        scenarios, real-time incident tracking, and a library of every train
+        station in France. Several of these tools replaced paid software. To tie
+        it all together, I built a portal with a single sign-on for every
+        application, and a platform that deployed them automatically: basically
+        Vercel, inside a locked-down enterprise network.
       </p>
 
       <p className={para}>
-        Since 2025, I&apos;ve focused my work on an ecosystem for developers in
-        the age of agents. I think low-level languages are where a big part of
-        software needs to go: control, performance, and shipping a single binary
-        with no runtime to drag around. The web is maintained by the biggest
-        tech companies in the world. Local and native, much less so. That&apos;s
-        where I want to work.
+        It wasn&apos;t easy, but I learned a lot there, and it was a good
+        experience.
+      </p>
+
+      <p className={para}>
+        I&apos;ve used AI since GPT-3, two years before ChatGPT, and the way I
+        work has kept evolving at the pace of the AI labs. I closely follow what
+        ships in AI, in software, and in tech in general.
+      </p>
+
+      <p className={para}>
+        I always build software I need, and I use it every day. Paneflow, Rust
+        Doctor, Cerata, and neo-compute all started that way.
+      </p>
+
+      <p className={para}>
+        Often, the need comes from a gap. New developer tools almost always ship
+        on Mac first, and on Windows and Linux, you have to wait. So I build the
+        ones I&apos;m missing, for all three platforms from day one. For each
+        new project, I start from a blank page. There are so many possible
+        approaches that the obvious one is rarely the best. Finding the one that
+        actually moves things forward is what I enjoy most about this work.
+      </p>
+
+      <p className={para}>
+        I believe there&apos;s nothing better than software built and maintained
+        by someone who uses it every day: I&apos;m the first to see every flaw
+        and every limitation.
+      </p>
+
+      <p className={para}>
+        Outside of code, I&apos;m married and a dad to twin girls, a little
+        Staffie, and a cat.
       </p>
     </section>
   );

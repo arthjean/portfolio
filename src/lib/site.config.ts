@@ -3,7 +3,7 @@ export const siteConfig = {
   name: "Arthur Jean",
   company: "StriveX",
   handle: "arthurjean.com",
-  role: "Indie Maker",
+  role: "Independent software engineer",
   pitch: "I build developer tools for the new way of coding.",
   location: "Remote · France",
   language: "en",
@@ -17,14 +17,15 @@ export const siteConfig = {
     "Arthur Jean, developer tools for AI coding agents and agentic workflows",
   profileImage: "/images/avatar.png",
   profileImageAlt: "Portrait of Arthur Jean",
-  lastModified: "2026-07-21",
+  lastModified: "2026-11-04",
   keywords: [
     "developer tools",
     "AI coding agents",
     "coding agent workflows",
     "Paneflow",
-    "Pyxis CLI",
+    "computer use MCP",
     "Rust developer",
+    "Zig developer",
     "Next.js developer",
     "Claude Code workflows",
     "MCP",
@@ -51,6 +52,7 @@ export const siteConfig = {
 // Current stack (pill tags)
 export const stack = [
   "Rust",
+  "Zig",
   "Next.js",
   "Python",
   "Tauri",
@@ -63,6 +65,7 @@ export const stack = [
 // Main stack - languages and frameworks (legacy, kept for compatibility)
 export const mainStack = [
   { name: "Rust", category: "Language" },
+  { name: "Zig", category: "Language" },
   { name: "Next.js", category: "Framework" },
   { name: "Python", category: "Language" },
   { name: "Tauri", category: "Desktop" },
@@ -130,6 +133,9 @@ export interface Project {
       one would disappear against a dark surface. Without one, the card sets
       the name as a typographic mark. */
   logo?: { src: string; darkSrc?: string };
+  /** Text mark for a project whose logo is a string of characters, shown
+      exactly as the project prints it. Takes precedence over `logo`. */
+  wordmark?: string;
   /** Spans the full row of the grid: the one project the page leads with. */
   featured?: boolean;
 }
@@ -170,35 +176,32 @@ export const projects: Project[] = [
     logo: { src: "/images/projects/kori.png" },
   },
   {
-    title: "Pyxis",
+    title: "Cerata",
     description:
-      "Codex CLI is the best agent harness, but it's locked to OpenAI. Pyxis won't be.",
-    tags: ["CLI", "Rust", "AI Agents"],
-    url: "https://github.com/arthjean/pyxis",
+      "Native Markdown editor with live preview. Rust and GPUI, plain files, no webview.",
+    tags: ["Desktop App", "Rust", "Markdown"],
+    url: "https://github.com/arthjean/cerata",
     meta: "2026, Open source",
+    logo: { src: "/images/projects/cerata.png" },
   },
   {
-    title: "Distill",
-    description: "Your agent wastes context. Distill fixes it.",
-    tags: ["Dev Tool", "MCP", "TypeScript"],
-    url: "https://distill-mcp.com",
-    meta: "2025, Open source",
-    logo: {
-      src: "/images/projects/distill.png",
-      darkSrc: "/images/projects/distill-dark.png",
-    },
-  },
-  {
-    title: "OpenbookLM",
+    title: "pf",
     description:
-      "OpenbookLM core: RAG and multi-LLM document chat with citations. Self-hostable, Apache-2.0.",
-    tags: ["RAG", "Rust", "Next.js"],
-    url: "https://github.com/arthjean/openbooklm-core",
-    meta: "2026, Open core",
-    logo: {
-      src: "/images/projects/openbooklm.png",
-      darkSrc: "/images/projects/openbooklm-dark.png",
-    },
+      "Tiny native coding agent in Zig. Any model, shell-like output, embeddable over ACP.",
+    tags: ["CLI", "Zig", "AI Agents"],
+    url: "https://github.com/arthjean/pf",
+    meta: "2026, Open source",
+    /* The mark pf prints at startup: U+1D491 (bold italic small p), then f. */
+    wordmark: "\u{1D491}f",
+  },
+  {
+    title: "neo-compute",
+    description:
+      "Computer use for Claude Code on Windows 11. One Zig binary, no network.",
+    tags: ["MCP", "Zig", "AI Agents"],
+    url: "https://github.com/arthjean/neo-compute",
+    meta: "2026, Open source",
+    logo: { src: "/images/projects/neo-compute.svg" },
   },
 ];
 
@@ -282,22 +285,16 @@ export interface JourneyStep {
 
 export const journey: JourneyStep[] = [
   {
-    period: "2021 - 2023",
-    title: "Learning software development",
-    description:
-      "Work-study training. The foundations of the craft, the first real lines of code, and the first contact with production work.",
-  },
-  {
     period: "2023 - 2025",
     title: "Sole developer in a company",
     description:
-      "Architecture, product, deployment: everything was on me. I started using AI in late 2022 with ChatGPT and GitHub Copilot, then moved to Cursor as soon as it launched.",
+      "Architecture, product, deployment: everything was on me. I had been using AI since GPT-3, two years before ChatGPT, and moved to Cursor as soon as it launched.",
   },
   {
     period: "2025",
     title: "Solopreneur",
     description:
-      "I launched my own dev tools: Rust Doctor and Distill. Open-source contributor to Zed. Full shift to Cursor, then Claude Code.",
+      "I launched my own dev tools: Rust Doctor and Paneflow. Open-source contributor to Zed. Full shift to Cursor, then Claude Code.",
   },
   {
     period: "2026",
@@ -339,8 +336,9 @@ export const experiences: Experience[] = [
         setup: "Remote",
         highlights: [
           "Paneflow: a native Rust and GPUI workspace for coding agents, shipped on Linux, macOS, and Windows.",
-          "Pyxis: a native Rust coding agent with a headless core, tooling, sessions, and a Linux sandbox.",
-          "Distill: a TypeScript MCP server that shrinks LLM context and maps codebase structure.",
+          "Cerata: a native Markdown editor with live preview, in Rust and GPUI, for Linux, macOS, and Windows.",
+          "pf: a model-agnostic coding agent CLI in Zig, derived from Vercel's fx and embeddable over ACP.",
+          "neo-compute: a single-binary Zig MCP server that gives Claude Code computer use on Windows 11.",
           "Open source: two Rust fixes merged into Zed.",
         ],
       },
@@ -372,7 +370,7 @@ export const faqItems = [
   {
     question: "What is your main tech stack?",
     answer:
-      "I mostly work with Next.js and TypeScript for the web, Rust for CLI tools and performance-sensitive backend work, and Python for AI pipelines. On the AI side, I use Claude Code, multi-agent systems, advanced RAG, and MCP.",
+      "I mostly work with Rust and Zig for native apps, CLI tools, and performance-sensitive systems, Next.js and TypeScript for the web, and Python for AI pipelines. On the AI side, I use Claude Code, multi-agent systems, advanced RAG, and MCP.",
   },
   {
     question: "What are you working on right now?",

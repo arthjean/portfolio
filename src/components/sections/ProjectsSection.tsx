@@ -7,7 +7,15 @@ import { cn } from "@/lib/utils";
 /* The real mark when the project has one. Without it the name itself becomes
    the mark, set like a command, with the prompt in the faint tone. */
 function ProjectMark({ project }: { project: Project }) {
-  const { logo } = project;
+  const { logo, wordmark } = project;
+
+  if (wordmark) {
+    return (
+      <span className="text-fg font-mono text-4xl font-medium tracking-tight">
+        {wordmark}
+      </span>
+    );
+  }
 
   if (!logo) {
     return (
