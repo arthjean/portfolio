@@ -1,7 +1,6 @@
 // Portfolio configuration
 export const siteConfig = {
   name: "Arthur Jean",
-  company: "StriveX",
   handle: "arthurjean.com",
   role: "Independent software engineer",
   pitch: "I build developer tools for the new way of coding.",
@@ -17,7 +16,7 @@ export const siteConfig = {
     "Arthur Jean, developer tools for AI coding agents and agentic workflows",
   profileImage: "/images/avatar.png",
   profileImageAlt: "Portrait of Arthur Jean",
-  lastModified: "2026-11-04",
+  lastModified: "2026-11-05",
   keywords: [
     "developer tools",
     "AI coding agents",
@@ -310,36 +309,34 @@ export interface ExperienceRole {
   title: string;
   contract: string;
   period: string;
-  duration: string;
   setup: string;
   highlights: string[];
 }
 
 export interface Experience {
   company: string;
-  logo: "strivex" | "avancial";
+  logo: "independent" | "avancial";
   location: string;
   roles: ExperienceRole[];
 }
 
 export const experiences: Experience[] = [
   {
-    company: "StriveX",
-    logo: "strivex",
+    company: "Independent",
+    logo: "independent",
     location: "Nantes, France",
     roles: [
       {
-        title: "Founder & Creator & Software Engineer",
+        title: "Software Engineer, Open Source",
         contract: "Full-time",
-        period: "11.2024 – Present",
-        duration: "1 yr 10 mos",
+        period: "07.2025 – Present",
         setup: "Remote",
         highlights: [
           "Paneflow: a native Rust and GPUI workspace for coding agents, shipped on Linux, macOS, and Windows.",
           "Cerata: a native Markdown editor with live preview, in Rust and GPUI, for Linux, macOS, and Windows.",
           "pf: a model-agnostic coding agent CLI in Zig, derived from Vercel's fx and embeddable over ACP.",
           "neo-compute: a single-binary Zig MCP server that gives Claude Code computer use on Windows 11.",
-          "Open source: two Rust fixes merged into Zed.",
+          "Open source: fixes for Zed, Vercel's fx, Mistral Vibe, and gitoxide.",
         ],
       },
     ],
@@ -353,7 +350,6 @@ export const experiences: Experience[] = [
         title: "Full Stack Software Engineer",
         contract: "Fixed-term",
         period: "03.2023 – 06.2025",
-        duration: "2 yrs 4 mos",
         setup: "On-site",
         highlights: [
           "Sole developer on the team, from architecture through production.",

@@ -1,18 +1,24 @@
 "use client";
 
-import { ChevronDown } from "lucide-react";
+import { ChevronDown, Terminal } from "lucide-react";
 import Image from "next/image";
 import { useId, useState } from "react";
 
-import { StrivexIcon } from "@/components/ui/brand-icons";
 import { Tile } from "@/components/ui/Tile";
 import type { Experience, ExperienceRole } from "@/lib/site.config";
 import { experiences } from "@/lib/site.config";
 import { cn } from "@/lib/utils";
 
 function CompanyMark({ logo }: { logo: Experience["logo"] }) {
-  if (logo === "strivex") {
-    return <StrivexIcon size={18} className="text-fg" />;
+  if (logo === "independent") {
+    return (
+      <Terminal
+        aria-hidden="true"
+        size={18}
+        strokeWidth={1.75}
+        className="text-fg"
+      />
+    );
   }
 
   return (
@@ -82,7 +88,7 @@ function RoleRow({
         <div className="overflow-hidden">
           <div className="ps-14 pt-1 pb-4">
             <p className="text-fg-muted text-sm">
-              {role.contract} · {role.period} · {role.duration} · {role.setup},{" "}
+              {role.contract} · {role.period} · {role.setup},{" "}
               {experience.location}
             </p>
 

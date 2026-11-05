@@ -35,21 +35,3 @@ export function LinkedinIcon(props: IconProps) {
 export function XIcon(props: IconProps) {
   return <Glyph {...props} path={paths.x} />;
 }
-
-export function StrivexIcon({ size = 16, className }: IconProps) {
-  return (
-    <svg
-      aria-hidden="true"
-      focusable="false"
-      width={size}
-      height={size}
-      viewBox="0 0 205 171"
-      fill="currentColor"
-      className={className}
-    >
-      <path d="M34.7007 10.6772H58.1903L170.3 158.555H146.81L34.7007 10.6772Z" />
-      <path d="M148.411 0H159.088L57.1222 170.299H46.979L148.411 0Z" />
-      <path d="M0 100.898L205 49.6484V60.3255L0 111.576V100.898Z" />
-    </svg>
-  );
-}
